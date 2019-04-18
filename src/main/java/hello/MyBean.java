@@ -8,15 +8,19 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
-@Profile("test")
+@Profile("testa")
 @Component
 public class MyBean implements CommandLineRunner {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
+
+    @Autowired
+    private ApplicationContext ctx;
 
     //@Value("hello")
     @Value("${test.prop}")
@@ -24,26 +28,25 @@ public class MyBean implements CommandLineRunner {
 
     public void run(String... args) {
         logger.info(myProp);
-        for (int i = 0; i < 3; i++) {
-            logger.info(Integer.toString(i));
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+
+        logger.info("***");
+        String[] beanNames = ctx.getBeanDefinitionNames();
+        Arrays.sort(beanNames);
+        for (String beanName : beanNames) {
+            logger.info(beanName);
         }
+        logger.info("***");
     }
 
     @Bean
-    public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
+    public CommandLineRunner commandLineRunner(Environment environment) {
         return args -> {
-            logger.info("Let's inspect the beans provided by Spring Boot:");
-            String[] beanNames = ctx.getBeanDefinitionNames();
-            Arrays.sort(beanNames);
-            for (String beanName : beanNames) {
-                System.out.println(beanName);
+            for (String profileName : environment.getActiveProfiles()) {
+                logger.info("active profile - " + profileName);
             }
-            logger.info("Let's inspect the beans provided by Spring Boot:");
+            for (String profileName : environment.getDefaultProfiles()) {
+                logger.info("default profile - " + profileName);
+            }
         };
     }
 
