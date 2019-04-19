@@ -51,6 +51,10 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <!--<configuration>-->
+                    <!--<mainClass>${start-class}</mainClass>-->
+                    <!--&lt;!&ndash; this is necessary as we're not using the Boot parent &ndash;&gt;-->
+                <!--</configuration>-->
             </plugin>
         </plugins>
     </build>

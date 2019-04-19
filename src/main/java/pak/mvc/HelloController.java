@@ -1,4 +1,4 @@
-package hello;
+package pak.mvc;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMethod;

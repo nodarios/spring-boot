@@ -1,15 +1,10 @@
-package hello;
+package pak;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.context.ApplicationContext;
-import org.springframework.core.env.Environment;
-
-import java.util.Arrays;
 
 
 @SpringBootApplication
@@ -32,7 +27,7 @@ public class Application {
         app.run(args);
 
 
-
+        logger.info("hi");
     }
 
 }

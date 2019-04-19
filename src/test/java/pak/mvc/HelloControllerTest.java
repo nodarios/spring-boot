@@ -1,4 +1,4 @@
-package hello;
+package pak.mvc;
 
 import org.junit.Ignore;
 import org.junit.Test;
