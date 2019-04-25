@@ -22,7 +22,7 @@ public class MyBean implements CommandLineRunner {
     @Autowired
     private ApplicationContext ctx;
 
-    //@Value("hello")
+    //@Value("${test.prop}")
     @Value("${test.prop}")
     private String myProp;
 
@@ -41,6 +41,8 @@ public class MyBean implements CommandLineRunner {
     @Bean
     public CommandLineRunner commandLineRunner(Environment environment) {
         return args -> {
+            logger.info(environment.getProperty("test.prop"));
+
             for (String profileName : environment.getActiveProfiles()) {
                 logger.info("active profile - " + profileName);
             }
