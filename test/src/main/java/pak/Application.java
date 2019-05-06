@@ -25,7 +25,7 @@ public class Application {
 
         //SpringApplication.run(Application.class, args);
         SpringApplicationBuilder app = new SpringApplicationBuilder(Application.class);
-        app.web(WebApplicationType.NONE);
+        //app.web(WebApplicationType.NONE);
         app.run(args);
 
 
