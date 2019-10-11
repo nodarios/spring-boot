@@ -25,19 +25,19 @@ public class Application {
         //System.setProperty("https.proxyHost", "proxy.loc");
         //System.setProperty("https.proxyPort", "3128");
 
-        //SpringApplication.run(Application.class, args);
+        //SpringApplication.run(MyEntity.class, args);
         SpringApplicationBuilder app = new SpringApplicationBuilder(Application.class);
-        //app.web(WebApplicationType.NONE);
+        app.web(WebApplicationType.NONE);
         app.run(args);
 
-        logger.info("hi");
-
-        for (Map.Entry<String, String> entry : System.getenv().entrySet()) {
-            logger.info("{} {}", entry.getKey(), entry.getValue());
-        }
-        for (String propName : System.getProperties().stringPropertyNames()) {
-            logger.info("{} {}", propName, System.getProperty(propName));
-        }
+//        logger.info("hi");
+//
+//        for (Map.Entry<String, String> entry : System.getenv().entrySet()) {
+//            logger.info("{} {}", entry.getKey(), entry.getValue());
+//        }
+//        for (String propName : System.getProperties().stringPropertyNames()) {
+//            logger.info("{} {}", propName, System.getProperty(propName));
+//        }
 
     }
 

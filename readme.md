@@ -8,6 +8,8 @@
 [spring data jpa](https://thoughts-on-java.org/what-is-spring-data-jpa-and-why-should-you-use-it/)
 [spring-security-tutorial](https://www.javatpoint.com/spring-security-tutorial)  
 
+[application-properties](https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html)
+
 ### `to do`
 Multi-Module Project With Spring Boot  
 remoting  
