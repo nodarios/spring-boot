@@ -16,8 +16,10 @@ public class Test {
     private Logger logger = LoggerFactory.getLogger(getClass());
 
     @Bean
-    public CommandLineRunner demo(/*MyRepo repository*/MyService svc) {
+    public CommandLineRunner demo(MyService svc) {
         return (args) -> {
+            svc.save(new MyEntity("name", "owner", "desc"));
+            svc.save(new MyEntity("name", "owner", "desc"));
             svc.save(new MyEntity("name", "owner", "desc"));
 
             for (MyEntity ent : svc.findAll()) {
