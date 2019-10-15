@@ -8,4 +8,6 @@ public interface MyService {
 
     Iterable<MyEntity> findAll();
 
+    MyEntity find(long id) throws Exception;
+
 }

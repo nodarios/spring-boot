@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class HelloControllerTest {
+public class MyControllerTest {
 
     @Autowired
     private MockMvc mvc;
@@ -27,7 +27,7 @@ public class HelloControllerTest {
     @Test
     public void getHello() throws Exception {
         mvc.perform(MockMvcRequestBuilders
-                .get("/")
+                .get("/mc/")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("Greetings from Spring Boot!")));

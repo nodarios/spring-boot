@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 import pak.datajpa.entity.MyEntity;
 import pak.datajpa.repository.MyRepo;
 
+import java.util.Optional;
+
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class MyServiceImp implements MyService {
@@ -24,6 +26,15 @@ public class MyServiceImp implements MyService {
 
     public Iterable<MyEntity> findAll() {
         return repo.findAll();
+    }
+
+    public MyEntity find(long id) throws Exception {
+        Optional<MyEntity> opt = repo.findById(id);
+
+        if (opt.isPresent())
+            return opt.get();
+        else
+            throw new Exception("MyEntity Not Found");
     }
 
 }

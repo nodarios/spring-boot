@@ -3,14 +3,14 @@ package pak.datajpa.entity;
 import javax.persistence.*;
 
 @Entity
-@SequenceGenerator(name="seq_myentity", sequenceName = "seq_myentity", allocationSize=50)
+@SequenceGenerator(name="seq_myentity", sequenceName = "seq_myentity", allocationSize=50, initialValue=4)
 public class MyEntity {
 
     @Id
     //@GeneratedValue(strategy = GenerationType.AUTO)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_myentity")
     @Column(name="application_id")
-    private Integer id;
+    private Long id;
 
     @Column(name = "app_name", nullable = false)
     private String name;
@@ -29,11 +29,11 @@ public class MyEntity {
         this.owner = owner;
         this.description = description;
     }
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
