@@ -3,6 +3,7 @@
 [spring vs spring-boot](https://www.baeldung.com/spring-vs-spring-boot)  
 [remoting with rmi](https://www.baeldung.com/spring-remoting-rmi)  
 [spring boot tutorial](https://www.javatpoint.com/spring-boot-tutorial)  
+[spring boot fundamentals](https://gitlab.com/videolearning/spring-fundamentals.git)  
 
 [spring boot](https://www.baeldung.com/spring-boot-start)  
 [spring data jpa](https://thoughts-on-java.org/what-is-spring-data-jpa-and-why-should-you-use-it/)
