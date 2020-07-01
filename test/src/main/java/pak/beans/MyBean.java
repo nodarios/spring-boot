@@ -41,6 +41,8 @@ public class MyBean implements CommandLineRunner {
     @Bean
     public CommandLineRunner commandLineRunner(Environment environment) {
         return args -> {
+            logger.info(environment.getProperty("USERNAME"));
+            logger.info(environment.getProperty("os.version"));
             logger.info(environment.getProperty("test.prop"));
 
             for (String profileName : environment.getActiveProfiles()) {
