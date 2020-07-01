@@ -1,5 +1,6 @@
 package pak.mvc;
 
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,17 +20,17 @@ import java.util.concurrent.atomic.AtomicLong;
 @RequestMapping("/mc")
 public class MyController {
 
-    @RequestMapping("/")
+    @RequestMapping(path = "/", method = RequestMethod.GET)
     public String index() {
         return "Greetings from Spring Boot!";
     }
 
-    @RequestMapping(value = "/{id}/{id2}/cust", method = RequestMethod.GET)
+    @RequestMapping(path = "/{id}/{id2}/cust", method = RequestMethod.GET)
     public Long getUser(@PathVariable Long id, @PathVariable Long id2) {
         return id + id2;
     }
 
-    @RequestMapping("/targets-0.2.jar")
+    @RequestMapping(path = "/targets-0.2.jar", method = RequestMethod.GET)
     public void downloadJar(HttpServletResponse response) throws IOException {
         Path path = Paths.get("C:\\Users\\nosakvarelidze\\Downloads\\", "targets-0.2.jar");
         Files.copy(path, response.getOutputStream());
@@ -39,12 +40,12 @@ public class MyController {
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
-    @RequestMapping("/greeting")
-    public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name, Greeting greeting) {
-        //return new Greeting(counter.incrementAndGet(), String.format(template, name));
-        greeting.setId(counter.incrementAndGet());
-        greeting.setContent(String.format(template, name));
-        return greeting;
+    @RequestMapping(path = "/greeting", method = RequestMethod.GET)
+    public Greeting greeting(@RequestParam(name = "suffix", defaultValue = "World") String suffix/*, Greeting greeting*/) {
+        return new Greeting(counter.incrementAndGet(), String.format(template, suffix));
+        //greeting.setId(counter.incrementAndGet());
+        //greeting.setContent(String.format(template, suffix));
+        //return greeting;
     }
 
     @Autowired

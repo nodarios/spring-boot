@@ -6,10 +6,13 @@
 [spring boot fundamentals](https://gitlab.com/videolearning/spring-fundamentals.git)  
 
 [spring boot](https://www.baeldung.com/spring-boot-start)  
-[spring data jpa](https://thoughts-on-java.org/what-is-spring-data-jpa-and-why-should-you-use-it/)
+[spring data jpa](https://thoughts-on-java.org/what-is-spring-data-jpa-and-why-should-you-use-it/)  
 [spring-security-tutorial](https://www.javatpoint.com/spring-security-tutorial)  
 
-[application-properties](https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html)
+[application-properties](https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html)  
+
+[swagger](https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api)  
+[swagger](https://dzone.com/articles/spring-boot-restful-api-documentation-with-swagger)  
 
 ### `to do`
 Multi-Module Project With Spring Boot  
