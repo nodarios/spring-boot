@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import pak.datajpa.entity.MyEntity;
 import pak.datajpa.repository.MyRepo;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -28,7 +29,7 @@ public class MyServiceImp implements MyService {
         return repo.findAll();
     }
 
-    public MyEntity find(long id) throws Exception {
+    public MyEntity findById(long id) throws Exception {
         Optional<MyEntity> opt = repo.findById(id);
 
         if (opt.isPresent())
@@ -36,5 +37,26 @@ public class MyServiceImp implements MyService {
         else
             throw new Exception("MyEntity Not Found");
     }
+
+    @Override
+    public List<MyEntity> findByName(String name) throws Exception {
+        Optional<List<MyEntity>> opt = repo.findByName(name);
+
+        if (opt.isPresent())
+            return opt.get();
+        else
+            throw new Exception("MyEntity Not Found");
+    }
+
+    @Override
+    public List<MyEntity> searchByOwner(String owner) {
+        return repo.searchByOwner(owner);
+    }
+
+    @Override
+    public List<MyEntity> searchByDescription(String description) {
+        return repo.searchByDescription(description);
+    }
+
 
 }

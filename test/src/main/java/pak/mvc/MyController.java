@@ -1,6 +1,5 @@
 package pak.mvc;
 
-import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +13,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
@@ -51,24 +51,43 @@ public class MyController {
     @Autowired
     private MyService svc;
 
-    @RequestMapping("/entity")
-    public Iterable<MyEntity> getEntity() {
+    @RequestMapping(path = "/entity/add", method = RequestMethod.GET)
+    public String addEntity(@RequestParam(name = "name", defaultValue = "default_name") String name) {
+        svc.save(new MyEntity(name, "default_owner", "default_desc"));
+        return "added " + name;
+    }
+
+    @RequestMapping(path = "/entity", method = RequestMethod.GET)
+    public Iterable<MyEntity> getEntities() {
         return svc.findAll();
     }
 
-    @RequestMapping("/entity/{id}")
-    public ResponseEntity<MyEntity> getEntity(@PathVariable("id") long id) {
+    @RequestMapping(path = "/entity/id/{id}", method = RequestMethod.GET)
+    public ResponseEntity<MyEntity> getEntityById(@PathVariable("id") long id) {
         try {
-            return new ResponseEntity<MyEntity>(svc.find(id), HttpStatus.OK);
+            return new ResponseEntity<MyEntity>(svc.findById(id), HttpStatus.OK);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage(), e);
         }
     }
 
-    @RequestMapping("/entity/add")
-    public String setEntity(@RequestParam(value = "name", defaultValue = "default_name") String name) {
-        svc.save(new MyEntity(name, "default_owner", "default_desc"));
-        return "added " + name;
+    @RequestMapping(path = "/entity/name/{name}", method = RequestMethod.GET)
+    public ResponseEntity<List<MyEntity>> getEntityByName(@PathVariable("name") String name) {
+        try {
+            return new ResponseEntity<List<MyEntity>>(svc.findByName(name), HttpStatus.OK);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage(), e);
+        }
+    }
+
+    @RequestMapping(path = "/entity/owner/{owner}", method = RequestMethod.GET)
+    public List<MyEntity> getEntityByOwner(@PathVariable("owner") String owner) {
+        return svc.searchByOwner(owner);
+    }
+
+    @RequestMapping(path = "/entity/description/{description}", method = RequestMethod.GET)
+    public List<MyEntity> getEntityByDescription(@PathVariable("description") String description) {
+        return svc.searchByDescription(description);
     }
 
 }
