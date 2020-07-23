@@ -14,6 +14,11 @@
 [spring data jpa](https://docs.spring.io/spring-data/data-jpa/docs/current/reference/html/#jpa.query-methods)  
 [spring data jpa](https://attacomsian.com/blog/spring-data-jpa-named-queries)  
 
+[generate entities from tables](https://intellij-support.jetbrains.com/hc/en-us/community/posts/115000751864-Generate-Persistence-Mapping-by-Database-Schema-Detail-settings-for-Entity-Class)  
+[idea-plugin-jpa-support](https://github.com/carter-ya/idea-plugin-jpa-support)  
+
+[custom error page](https://www.baeldung.com/spring-boot-custom-error-page)  
+
 [spring-security-tutorial](https://www.javatpoint.com/spring-security-tutorial)  
 
 [application-properties](https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html)  

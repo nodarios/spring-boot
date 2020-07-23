@@ -1,9 +1,6 @@
 package pak.datajpa.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 
 import javax.persistence.*;
 
@@ -18,10 +15,7 @@ import javax.persistence.*;
                 query = "SELECT * FROM MY_ENTITY b WHERE b.description = :description",
                 resultClass = MyEntity.class)
 })
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
+@Data
 public class MyEntity {
 
     @Id
@@ -30,10 +24,9 @@ public class MyEntity {
     @Column(name = "application_id")
     private Long id;
 
-    @Column(name = "app_name", nullable = false)
+    @Column(name = "app_name", nullable = false, unique = true, length = 2000)
     private String name;
 
-    @Column(length = 2000)
     private String description;
 
     private String owner;
@@ -43,16 +36,6 @@ public class MyEntity {
         this.name = name;
         this.owner = owner;
         this.description = description;
-    }
-
-    @Override
-    public String toString() {
-        return "MyEntity{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", owner=" + owner +
-                ", description='" + description + '\'' +
-                '}';
     }
 
 }
