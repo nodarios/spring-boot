@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import pak.datajpa.entity.MyEntity;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,5 +20,10 @@ public interface MyRepo extends JpaRepository<MyEntity, Long> {
 
     //@Query(name = "MyEntity.searchByDescription", nativeQuery = true)
     List<MyEntity> searchByDescription(@Param("description") String description);
+
+    //@Query(value = "SELECT SYSDATE FROM DUAL", nativeQuery = true)
+    //@Query(value = "SELECT SYSDATE()", nativeQuery = true)
+    @Query(value = "SELECT CURRENT_TIMESTAMP", nativeQuery = true)
+    Timestamp getDatabaseTime();
 
 }

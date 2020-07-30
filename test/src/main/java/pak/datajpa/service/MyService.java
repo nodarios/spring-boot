@@ -1,7 +1,5 @@
 package pak.datajpa.service;
 
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import pak.datajpa.entity.MyEntity;
 
 import java.util.List;
