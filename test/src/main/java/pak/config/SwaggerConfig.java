@@ -11,8 +11,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import static springfox.documentation.builders.PathSelectors.regex;
 
-// http://localhost:8080/v2/api-docs
 // http://localhost:8080/swagger-ui.html
+// http://localhost:8080/swagger-resources/
+// http://localhost:8080/v2/api-docs?group=product
 
 @Configuration
 @EnableSwagger2
@@ -21,6 +22,7 @@ public class SwaggerConfig {
     @Bean
     public Docket productApi() {
         return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("product")
                 .select()
                 //.apis(RequestHandlerSelectors.any())
                 .apis(RequestHandlerSelectors.basePackage("pak.mvc"))
