@@ -1,4 +1,4 @@
-package pak.mvc;
+package pak.controllers;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;

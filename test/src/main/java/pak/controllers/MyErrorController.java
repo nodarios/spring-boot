@@ -1,4 +1,4 @@
-package pak.mvc;
+package pak.controllers;
 
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
@@ -25,4 +25,5 @@ public class MyErrorController implements ErrorController {
     public String getErrorPath() {
         return "/error";
     }
+
 }

@@ -13,22 +13,22 @@ import static springfox.documentation.builders.PathSelectors.regex;
 
 // http://localhost:8080/swagger-ui.html
 // http://localhost:8080/swagger-resources/
-// http://localhost:8080/v2/api-docs?group=product
+// http://localhost:8080/v2/api-docs?group=greeting
 
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
 
     @Bean
-    public Docket productApi() {
+    public Docket greetingDocket() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("product")
+                .groupName("greeting")
                 .select()
                 //.apis(RequestHandlerSelectors.any())
-                .apis(RequestHandlerSelectors.basePackage("pak.mvc"))
+                .apis(RequestHandlerSelectors.basePackage("pak.controllers"))
                 //.paths(PathSelectors.any())
                 //.paths(regex("/mc.*"))
-                .paths(regex("/mc/greeting"))
+                .paths(regex("/mcg/greeting"))
                 .build()
                 //.apiInfo(metaData())
                 ;

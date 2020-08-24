@@ -1,4 +1,4 @@
-package pak.mvc;
+package pak.dto;
 
 public class Greeting {
 

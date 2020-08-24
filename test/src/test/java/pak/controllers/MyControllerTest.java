@@ -1,4 +1,4 @@
-package pak.mvc;
+package pak.controllers;
 
 import org.junit.Ignore;
 import org.junit.Test;

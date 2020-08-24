@@ -24,32 +24,48 @@ public class MyBean implements CommandLineRunner {
 
     //@Value("${test.prop}")
     @Value("${test.prop}")
-    private String myProp;
+    private String testProp;
 
     public void run(String... args) {
-        logger.info(myProp);
-
         logger.info("***");
-        String[] beanNames = ctx.getBeanDefinitionNames();
-        Arrays.sort(beanNames);
-        for (String beanName : beanNames) {
-            logger.info(beanName);
-        }
-        logger.info("***");
+        logger.info("testProp {}", testProp);
     }
 
     @Bean
-    public CommandLineRunner commandLineRunner(Environment environment) {
+    public CommandLineRunner printBeans() {
         return args -> {
-            logger.info(environment.getProperty("USERNAME"));
-            logger.info(environment.getProperty("os.version"));
-            logger.info(environment.getProperty("test.prop"));
+            logger.info("***");
+            String[] beanNames = ctx.getBeanDefinitionNames();
+            Arrays.sort(beanNames);
+            for (String beanName : beanNames) {
+                logger.info("bean {}", beanName);
+            }
+        };
+    }
 
+    @Bean
+    public CommandLineRunner printProps() {
+        return args -> {
+            logger.info("***");
+            Environment environment = ctx.getEnvironment();
+            // sys env
+            logger.info("USERNAME {}", environment.getProperty("USERNAME"));
+            // sys prop
+            logger.info("os.version {}", environment.getProperty("os.version"));
+            // app prop
+            logger.info("test.prop {}", environment.getProperty("test.prop"));
+        };
+    }
+
+    @Bean
+    public CommandLineRunner printProfiles(Environment environment) {
+        return args -> {
+            logger.info("***");
             for (String profileName : environment.getActiveProfiles()) {
-                logger.info("active profile - " + profileName);
+                logger.info("active profile - {}", profileName);
             }
             for (String profileName : environment.getDefaultProfiles()) {
-                logger.info("default profile - " + profileName);
+                logger.info("default profile - {}", profileName);
             }
         };
     }

@@ -6,9 +6,6 @@ import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
-import java.util.Map;
-
-
 @SpringBootApplication
 //@Configuration
 //@EnableAutoConfiguration
@@ -29,15 +26,6 @@ public class Application {
         SpringApplicationBuilder app = new SpringApplicationBuilder(Application.class);
         //app.web(WebApplicationType.NONE);
         app.run(args);
-
-//        logger.info("hi");
-//
-//        for (Map.Entry<String, String> entry : System.getenv().entrySet()) {
-//            logger.info("{} {}", entry.getKey(), entry.getValue());
-//        }
-//        for (String propName : System.getProperties().stringPropertyNames()) {
-//            logger.info("{} {}", propName, System.getProperty(propName));
-//        }
 
     }
 

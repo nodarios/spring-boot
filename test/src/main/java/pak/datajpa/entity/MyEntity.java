@@ -1,6 +1,6 @@
 package pak.datajpa.entity;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -15,7 +15,13 @@ import javax.persistence.*;
                 query = "SELECT * FROM MY_ENTITY b WHERE b.description = :description",
                 resultClass = MyEntity.class)
 })
-@Data
+//@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Setter
+@Getter
+@ToString
+@EqualsAndHashCode
 public class MyEntity {
 
     @Id
