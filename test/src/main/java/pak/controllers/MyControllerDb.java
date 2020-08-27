@@ -17,7 +17,13 @@ public class MyControllerDb {
     @Autowired
     private MyService svc;
 
-    @RequestMapping(path = "/entity/add", method = RequestMethod.GET)
+    @RequestMapping(path = "/entity/add", method = RequestMethod.POST/*method = RequestMethod.PUT*/)
+    public String addEntity(@RequestBody MyEntity myEntity) throws Exception {
+        svc.save(myEntity);
+        return "added";
+    }
+
+    @RequestMapping(path = "/entity/addWithName", method = RequestMethod.GET)
     public String addEntity(@RequestParam(name = "name", defaultValue = "default_name") String name) {
         svc.save(new MyEntity(name, "default_owner", "default_desc"));
         return "added " + name;
