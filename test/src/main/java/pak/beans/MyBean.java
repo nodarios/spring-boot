@@ -22,23 +22,36 @@ public class MyBean implements CommandLineRunner {
     @Autowired
     private ApplicationContext ctx;
 
+    @Value("${USERNAME:default value}")
+    private String userName;
+
+    @Value("${os.version:default value}")
+    private String osVersion;
+
     //@Value("${test.prop:default value}")
     @Value("${test.prop:default value}")
     private String testProp;
 
-    // SpEL
-    @Value("#{systemProperties['os.version'].concat(' SpEL').toUpperCase()}")
-    private String osVersion;
+    //@Value("${test.prop.2:default value}")
+    @Value("${test.prop.2:default value}")
+    private String testProp2;
 
     // SpEL
-    @Value("#{systemEnvironment['USERNAME'] ?: 'my default system env value'}")
-    private String userName;
+    @Value("#{systemEnvironment['USERNAME'] ?: 'default value'}")
+    private String userNameSpel;
+
+    // SpEL
+    @Value("#{systemProperties['os.version'].concat(' SpEL').toUpperCase()}")
+    private String osVersionSpel;
 
     public void run(String... args) {
         logger.info("***");
-        logger.info("testProp {}", testProp);
-        logger.info("osVersion {}", osVersion);
         logger.info("userName {}", userName);
+        logger.info("osVersion {}", osVersion);
+        logger.info("testProp {}", testProp);
+        logger.info("testProp2 {}", testProp2);
+        logger.info("userNameSpel {}", userNameSpel);
+        logger.info("osVersionSpel {}", osVersionSpel);
     }
 
     @Bean
