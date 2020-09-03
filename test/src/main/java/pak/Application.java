@@ -26,7 +26,6 @@ public class Application {
         SpringApplicationBuilder app = new SpringApplicationBuilder(Application.class);
         //app.web(WebApplicationType.NONE);
         app.run(args);
-
     }
 
 }
