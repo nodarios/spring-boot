@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
-@Profile("testa")
+@Profile({"test"})
 @Component
 public class MyBean implements CommandLineRunner {
 
