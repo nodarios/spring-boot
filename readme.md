@@ -19,6 +19,9 @@
 
 [custom error page](https://www.baeldung.com/spring-boot-custom-error-page)  
 
+[aop](https://dzone.com/articles/implementing-aop-with-spring-boot-and-aspectj)  
+[mvc interceptor](https://www.baeldung.com/spring-mvc-handlerinterceptor)  
+
 [spring-security-tutorial](https://www.javatpoint.com/spring-security-tutorial)  
 
 [application-properties](https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html)  
