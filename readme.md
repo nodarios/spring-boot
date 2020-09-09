@@ -30,7 +30,6 @@
 [swagger](https://dzone.com/articles/spring-boot-restful-api-documentation-with-swagger)  
 
 ### `to do`
-interceptors  
 Spring Boot Test  
-Spring Boot Actuator  
 spring security  
+Spring Boot Actuator  
