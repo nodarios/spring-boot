@@ -4,13 +4,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>com.cmp.sb</groupId>
     <artifactId>remoting-rmi-server</artifactId>
+    <version>3.0.0</version>
     <packaging>jar</packaging>
-	
+
     <parent>
 		<groupId>com.cmp.sb</groupId>
 		<artifactId>parent</artifactId>
-        <version>${app.global.version}</version>
+        <version>3.0.0</version>
     </parent>
 
     <dependencies>
@@ -27,7 +29,7 @@
         <dependency>
             <groupId>com.cmp.sb</groupId>
             <artifactId>remoting-api</artifactId>
-            <version>${project.version}</version>
+            <version>3.0.0</version>
         </dependency>
     </dependencies>
 
