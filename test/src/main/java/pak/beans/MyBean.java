@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
-@Profile({"test"})
+@Profile({"dev"})
 @Component
 public class MyBean implements CommandLineRunner {
 
@@ -28,13 +28,13 @@ public class MyBean implements CommandLineRunner {
     @Value("${os.version:default value}")
     private String osVersion;
 
-    //@Value("${test.prop:default value}")
-    @Value("${test.prop:default value}")
-    private String testProp;
+    //@Value("${dev.prop:default value}")
+    @Value("${dev.prop:default value}")
+    private String devProp;
 
-    //@Value("${test.prop.2:default value}")
-    @Value("${test.prop.2:default value}")
-    private String testProp2;
+    //@Value("${dev.prop.2:default value}")
+    @Value("${dev.prop.2:default value}")
+    private String devProp2;
 
     // SpEL
     @Value("#{systemEnvironment['USERNAME'] ?: 'default value'}")
@@ -48,8 +48,8 @@ public class MyBean implements CommandLineRunner {
         logger.info("***");
         logger.info("userName {}", userName);
         logger.info("osVersion {}", osVersion);
-        logger.info("testProp {}", testProp);
-        logger.info("testProp2 {}", testProp2);
+        logger.info("devProp {}", devProp);
+        logger.info("devProp2 {}", devProp2);
         logger.info("userNameSpel {}", userNameSpel);
         logger.info("osVersionSpel {}", osVersionSpel);
     }
@@ -76,7 +76,7 @@ public class MyBean implements CommandLineRunner {
             // sys prop
             logger.info("os.version {}", environment.getProperty("os.version"));
             // app prop
-            logger.info("test.prop {}", environment.getProperty("test.prop"));
+            logger.info("dev.prop {}", environment.getProperty("dev.prop"));
         };
     }
 
