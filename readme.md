@@ -29,6 +29,7 @@
 [swagger](https://dzone.com/articles/spring-boot-restful-api-documentation-with-swagger)  
 
 [spring-boot-testing](https://www.baeldung.com/spring-boot-testing)  
+[running tests](https://www.jrebel.com/blog/how-to-use-java-integration-testing)  
 
 [spring-boot-security](https://dzone.com/articles/securing-rest-services-with-oauth2-in-springboot-1)  
 [spring-boot-security](https://dzone.com/articles/secure-a-spring-boot-app-with-spring-security-and)  
