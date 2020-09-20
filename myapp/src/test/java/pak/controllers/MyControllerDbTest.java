@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import pak.datajpa.entity.MyEntity;
+import pak.datajpa.repository.MyRepo;
 import pak.datajpa.service.MyService;
 
 import java.util.Arrays;
@@ -19,11 +20,13 @@ import java.util.List;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 //@Ignore
 @RunWith(SpringRunner.class)
+//@SpringBootTest
+//@AutoConfigureMockMvc
+//or
 @WebMvcTest(controllers = {MyControllerDb.class})
 public class MyControllerDbTest {
 
@@ -49,6 +52,7 @@ public class MyControllerDbTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$[0].name", equalTo("a")));
+                //.andExpect(content().string(equalTo("")))
     }
 
 }

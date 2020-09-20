@@ -18,8 +18,8 @@
     </parent>
 
     <modules>
-        <module>test</module>
-        <module>test-api</module>
+        <module>myapp</module>
+        <module>myapp-api</module>
         <module>remoting-rmi-server</module>
         <module>remoting-rmi-client</module>
         <module>remoting-api</module>
