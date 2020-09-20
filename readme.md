@@ -37,6 +37,5 @@
 [spring-boot-security](https://docs.spring.io/spring-security-oauth2-boot/docs/current/reference/html5/)  
 
 ### `to do`
-Spring Boot Test  
 spring security  
 Spring Boot Actuator  
