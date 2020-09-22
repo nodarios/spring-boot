@@ -23,7 +23,7 @@ import static org.hamcrest.Matchers.equalTo;
 
 //@Ignore
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT/*, properties = {"spring.h2.console.enabled=true", "spring.h2.console.path=/h2"}*/)
 @Sql({"/data-plus.sql"})
 public class MyControllerDbIT {
 
