@@ -1,16 +1,14 @@
 package pak.interceptors;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+@Slf4j
 public class MyMvcInterceptor extends HandlerInterceptorAdapter {
-
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         long startTime = System.currentTimeMillis();
@@ -23,7 +21,7 @@ public class MyMvcInterceptor extends HandlerInterceptorAdapter {
         long endTime = System.currentTimeMillis();
         long executeTime = endTime - startTime;
         //modelAndView.addObject("executeTime", executeTime);
-        logger.info("handler: {}, executeTime: {} ms", handler, executeTime);
+        log.info("handler: {}, executeTime: {} ms", handler, executeTime);
     }
 
 }

@@ -1,12 +1,11 @@
 package pak.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -25,7 +24,6 @@ import java.util.List;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -35,9 +33,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 //@AutoConfigureMockMvc
 //or
 @WebMvcTest(controllers = {MyControllerDb.class})
+@Slf4j
 public class MyControllerDbTest {
-
-    private Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private MockMvc mvc;
@@ -72,7 +69,7 @@ public class MyControllerDbTest {
                 .andExpect(jsonPath("$[0].name", equalTo("a")))
                 //.andExpect(content().string(equalTo("")))
                 .andReturn();
-        logger.info("response {}", mvcResult.getResponse().getContentAsString());
+        log.info("response {}", mvcResult.getResponse().getContentAsString());
     }
 
     @Test
@@ -88,7 +85,7 @@ public class MyControllerDbTest {
                 .andExpect(jsonPath("$.name", equalTo("a")))
                 //.andExpect(content().string(equalTo("")))
                 .andReturn();
-        logger.info("response {}", mvcResult.getResponse().getContentAsString());
+        log.info("response {}", mvcResult.getResponse().getContentAsString());
     }
 
 }

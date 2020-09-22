@@ -1,7 +1,6 @@
 package pak;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -12,8 +11,6 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 //@ComponentScan
 //@Import(HelloController.class)
 public class Application {
-
-    private static Logger logger = LoggerFactory.getLogger(Application.class);
 
     public static void main(String[] args) {
         System.setProperty("spring.devtools.restart.enabled", "true");

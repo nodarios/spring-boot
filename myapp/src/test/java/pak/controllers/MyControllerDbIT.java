@@ -1,10 +1,9 @@
 package pak.controllers;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,9 +24,8 @@ import static org.hamcrest.Matchers.equalTo;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT/*, properties = {"spring.h2.console.enabled=true", "spring.h2.console.path=/h2"}*/)
 @Sql(scripts = {"/data-plus.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+@Slf4j
 public class MyControllerDbIT {
-
-    private Logger logger = LoggerFactory.getLogger(getClass());
 
     @LocalServerPort
     private int port;
@@ -47,8 +45,8 @@ public class MyControllerDbIT {
 
     @Test
     public void testGetEntities() throws Exception {
-        //logger.info("port {}", port);
-        //logger.info("serverPort {}", serverPort);
+        log.info("port {}", port);
+        log.info("serverPort {}", serverPort);
 
         //ParameterizedTypeReference<List<MyEntity>> responseType =
         //        new ParameterizedTypeReference<List<MyEntity>>() {

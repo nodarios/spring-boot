@@ -1,7 +1,6 @@
 package pak.beans;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
@@ -15,9 +14,8 @@ import java.util.Arrays;
 
 @Profile({"dev"})
 @Component
+@Slf4j
 public class MyBean implements CommandLineRunner {
-
-    private Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private ApplicationContext ctx;
@@ -45,23 +43,23 @@ public class MyBean implements CommandLineRunner {
     private String osVersionSpel;
 
     public void run(String... args) {
-        logger.info("***");
-        logger.info("userName {}", userName);
-        logger.info("osVersion {}", osVersion);
-        logger.info("devProp {}", devProp);
-        logger.info("devProp2 {}", devProp2);
-        logger.info("userNameSpel {}", userNameSpel);
-        logger.info("osVersionSpel {}", osVersionSpel);
+        log.info("***");
+        log.info("userName {}", userName);
+        log.info("osVersion {}", osVersion);
+        log.info("devProp {}", devProp);
+        log.info("devProp2 {}", devProp2);
+        log.info("userNameSpel {}", userNameSpel);
+        log.info("osVersionSpel {}", osVersionSpel);
     }
 
     @Bean
     public CommandLineRunner printBeans() {
         return args -> {
-            logger.info("***");
+            log.info("***");
             String[] beanNames = ctx.getBeanDefinitionNames();
             Arrays.sort(beanNames);
             for (String beanName : beanNames) {
-                logger.info("bean {}", beanName);
+                log.info("bean {}", beanName);
             }
         };
     }
@@ -69,26 +67,26 @@ public class MyBean implements CommandLineRunner {
     @Bean
     public CommandLineRunner printProps() {
         return args -> {
-            logger.info("***");
+            log.info("***");
             Environment environment = ctx.getEnvironment();
             // sys env
-            logger.info("USERNAME {}", environment.getProperty("USERNAME"));
+            log.info("USERNAME {}", environment.getProperty("USERNAME"));
             // sys prop
-            logger.info("os.version {}", environment.getProperty("os.version"));
+            log.info("os.version {}", environment.getProperty("os.version"));
             // app prop
-            logger.info("dev.prop {}", environment.getProperty("dev.prop"));
+            log.info("dev.prop {}", environment.getProperty("dev.prop"));
         };
     }
 
     @Bean
     public CommandLineRunner printProfiles(Environment environment) {
         return args -> {
-            logger.info("***");
+            log.info("***");
             for (String profileName : environment.getActiveProfiles()) {
-                logger.info("active profile - {}", profileName);
+                log.info("active profile - {}", profileName);
             }
             for (String profileName : environment.getDefaultProfiles()) {
-                logger.info("default profile - {}", profileName);
+                log.info("default profile - {}", profileName);
             }
         };
     }
