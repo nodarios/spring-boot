@@ -20,8 +20,8 @@ public class MyServiceImp implements MyService {
     MyRepo repo;
 
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
-    public void save(MyEntity app) {
-        repo.save(app);
+    public MyEntity save(MyEntity app) {
+        return repo.save(app);
         //int i = 10/0;
     }
 

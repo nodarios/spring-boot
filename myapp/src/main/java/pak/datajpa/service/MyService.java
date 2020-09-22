@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface MyService {
 
-    void save(MyEntity app);
+    MyEntity save(MyEntity app);
 
     Iterable<MyEntity> findAll();
 

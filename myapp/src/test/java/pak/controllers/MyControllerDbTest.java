@@ -1,5 +1,6 @@
 package pak.controllers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,6 +24,8 @@ import java.util.List;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -42,12 +45,19 @@ public class MyControllerDbTest {
     @MockBean
     private MyService svc;
 
+    @Autowired
+    private ObjectMapper objectMapper;
+
+    private MyEntity myEntity = new MyEntity(1L, "a", "desc", "owner");
+
+    private List<MyEntity> myEntityList = Arrays.asList(myEntity);
+
     @Before
-    public void setUp() {
-        MyEntity myEntity = new MyEntity(1L, "a", "desc", "owner");
-        List<MyEntity> myEntityList = Arrays.asList(myEntity);
+    public void setUp() throws Exception {
         Mockito.when(svc.findAll()).thenReturn(myEntityList);
         //given(svc.findAll()).willReturn(myEntityList);
+
+        Mockito.when(svc.save(any(MyEntity.class))).thenReturn(myEntity);
     }
 
     @Test
@@ -60,6 +70,22 @@ public class MyControllerDbTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$[0].name", equalTo("a")))
+                //.andExpect(content().string(equalTo("")))
+                .andReturn();
+        logger.info("response {}", mvcResult.getResponse().getContentAsString());
+    }
+
+    @Test
+    public void testAddEntity() throws Exception {
+        RequestBuilder requestBuilder = MockMvcRequestBuilders
+                .post("/mcdb/entity/add")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(new MyEntity()));
+        MvcResult mvcResult = mvc
+                .perform(requestBuilder)
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.name", equalTo("a")))
                 //.andExpect(content().string(equalTo("")))
                 .andReturn();
         logger.info("response {}", mvcResult.getResponse().getContentAsString());
