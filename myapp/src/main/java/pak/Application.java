@@ -1,6 +1,5 @@
 package pak;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
