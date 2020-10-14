@@ -31,10 +31,7 @@
 [spring-boot-testing](https://www.baeldung.com/spring-boot-testing)  
 [running tests](https://www.jrebel.com/blog/how-to-use-java-integration-testing)  
 
-[spring-boot-security](https://dzone.com/articles/securing-rest-services-with-oauth2-in-springboot-1)  
-[spring-boot-security](https://dzone.com/articles/secure-a-spring-boot-app-with-spring-security-and)  
-[spring-boot-security](https://developer.okta.com/blog/2019/03/12/oauth2-spring-security-guide)  
-[spring-boot-security](https://docs.spring.io/spring-security-oauth2-boot/docs/current/reference/html5/)  
+[Spring Security Basics](https://www.youtube.com/watch?v=sm-8qfMWEV8&list=PLqq-6Pq4lTTYTEooakHchTGglSvkZAjnE)   
 
 ### `to do`
 spring security  
