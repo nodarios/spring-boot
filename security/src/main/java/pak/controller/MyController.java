@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import pak.model.AuthenticationRequest;
 import pak.model.AuthenticationResponse;
-import pak.service.JwtService;
+import pak.component.JwtTokenUtil;
 import pak.service.UserService;
 
 @Slf4j
@@ -26,14 +26,13 @@ public class MyController {
     private UserService userService;
 
     @Autowired
-    JwtService jwtService;
+    private JwtTokenUtil jwtTokenUtil;
 
     @Autowired
     private AuthenticationManager authenticationManager;
 
     @RequestMapping(path = {"/welcome"}, method = RequestMethod.GET)
     public String welcome() {
-        log.info("welcome welcome welcome");
         return "welcome";
     }
 
@@ -49,11 +48,10 @@ public class MyController {
                     new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword())
             );
         } catch (AuthenticationException e) {
-            //log.error("", e);
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, e.getMessage(), e);
         }
         final UserDetails userDetails = userService.loadUserByUsername(authenticationRequest.getUsername());
-        final String jwt = jwtService.generateToken(userDetails);
+        final String jwt = jwtTokenUtil.generateToken(userDetails);
         //return new ResponseEntity<>(new AuthenticationResponse(jwt), HttpStatus.OK);
         return ResponseEntity.ok(new AuthenticationResponse(jwt));
     }

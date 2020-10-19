@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.util.Collections;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -18,7 +18,7 @@ public class UserService implements UserDetailsService {
         return new User(
                 "foo",
                 new BCryptPasswordEncoder().encode("foo"),
-                new ArrayList<>()
+                Collections.emptyList()
         );
     }
 

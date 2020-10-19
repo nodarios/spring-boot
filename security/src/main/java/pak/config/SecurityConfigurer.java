@@ -12,7 +12,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import pak.filter.JwtRequestFilter;
+import pak.component.JwtRequestFilter;
 import pak.service.UserService;
 
 @Configuration
@@ -53,7 +53,7 @@ class SecurityConfigurer extends WebSecurityConfigurerAdapter {
                 //.and().formLogin()
                 //.and().exceptionHandling()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                // SECURITY INTERCEPTOR
+                /** security interceptor */
                 .and().addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
         ;
     }
