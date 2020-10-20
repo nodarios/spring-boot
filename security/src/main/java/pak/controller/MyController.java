@@ -41,6 +41,11 @@ public class MyController {
         return "guarded";
     }
 
+    @RequestMapping(path = {"/superGuarded"}, method = RequestMethod.GET)
+    public String superGuarded() {
+        return "superGuarded";
+    }
+
     @RequestMapping(path = "/authenticate", method = RequestMethod.POST)
     public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest authenticationRequest) {
         try {

@@ -48,6 +48,7 @@ class SecurityConfigurer extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/welcome", "/authenticate").permitAll()
+                .antMatchers("/superGuarded").hasAuthority("PR_SUPER_ACCESS")
                 .anyRequest().authenticated()
                 .and().httpBasic()
                 //.and().formLogin()
