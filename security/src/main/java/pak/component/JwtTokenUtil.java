@@ -1,7 +1,6 @@
 package pak.component;
 
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwt;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,7 +21,9 @@ public class JwtTokenUtil {
     @Value("${jwt.token.expiration.hours}")
     private long tokenExpirationHours;
 
-    /** among exceptions are: SignatureException and ExpiredJwtException */
+    /**
+     * among exceptions are: SignatureException and ExpiredJwtException
+     */
     private Claims extractClaims(String token) {
         return Jwts
                 .parser()

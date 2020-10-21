@@ -42,12 +42,12 @@ class SecurityConfigurer extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userService);
     }
 
+    /**
+     * antPattern:
+     * "?" matches one character, "*" matches zero or more characters, "**" matches zero or more 'directories' in a path.
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        /**
-         * antPattern:
-         * "?" matches one character, "*" matches zero or more characters, "**" matches zero or more 'directories' in a path.
-         */
         http
                 .csrf().disable()
                 .authorizeRequests()
@@ -59,7 +59,7 @@ class SecurityConfigurer extends WebSecurityConfigurerAdapter {
                 //.and().formLogin()
                 //.and().exceptionHandling()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                /** security interceptor */
+                // security interceptor
                 .and().addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
         ;
     }
