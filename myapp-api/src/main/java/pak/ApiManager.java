@@ -13,6 +13,7 @@ public class ApiManager {
     private static void init(String... apiUrlArg) {
         String url = apiUrlArg.length == 1 ? apiUrlArg[0] : apiUrl;
         apiClient = new ApiClient().setBasePath(url);
+        //apiClient = new AuthApiClient().setBasePath(url);
         myControllerGreetingApi = new MyControllerGreetingApi(apiClient);
         initialized = true;
     }
