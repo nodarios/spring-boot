@@ -1,16 +1,16 @@
 package pak.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.io.Serializable;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
 public class AuthenticationResponse implements Serializable {
-
-    private final String jwt;
-
-    public AuthenticationResponse(String jwt) {
-        this.jwt = jwt;
-    }
-
-    public String getJwt() {
-        return jwt;
-    }
+    private String jwt;
 }
