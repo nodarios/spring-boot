@@ -44,12 +44,15 @@ class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        /**
+         * antPattern:
+         * "?" matches one character, "*" matches zero or more characters, "**" matches zero or more 'directories' in a path.
+         */
         http
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/welcome", "/authenticate").permitAll()
                 .antMatchers("/superGuarded").hasAuthority("PR_SUPER_ACCESS")
-                /** "?" matches one character, "*" matches zero or more characters, "**" matches zero or more 'directories' in a path */
                 //.antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA')")
                 .anyRequest().authenticated()
                 .and().httpBasic()
