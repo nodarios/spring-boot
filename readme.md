@@ -27,6 +27,7 @@
 
 [swagger](https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api)  
 [swagger](https://dzone.com/articles/spring-boot-restful-api-documentation-with-swagger)  
+[swagger codegen](https://stackoverflow.com/questions/39724076/swagger-codegen-cli-java-client-how-to-use-it-right)  
 
 [spring-boot-testing](https://www.baeldung.com/spring-boot-testing)  
 [running tests](https://www.jrebel.com/blog/how-to-use-java-integration-testing)  
@@ -34,5 +35,4 @@
 [Spring Security Basics](https://www.youtube.com/watch?v=sm-8qfMWEV8&list=PLqq-6Pq4lTTYTEooakHchTGglSvkZAjnE)   
 
 ### `to do`
-spring security  
 Spring Boot Actuator  
