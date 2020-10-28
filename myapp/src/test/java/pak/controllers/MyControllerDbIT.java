@@ -52,10 +52,10 @@ public class MyControllerDbIT {
         //        new ParameterizedTypeReference<List<MyEntity>>() {
         //        };
         //ResponseEntity<List<MyEntity>> response = template.exchange(
-        //        base.toString(),
+        //        base.toString()/* + "/account/{account}?name={name}"*/,
         //        HttpMethod.GET,
         //        null,
-        //        responseType
+        //        responseType/*, "my-account", "my-name"*/
         //);
         //assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
         //assertThat(response.getBody().size(), equalTo(7));
