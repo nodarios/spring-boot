@@ -7,7 +7,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -28,12 +30,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 //@Ignore
-@RunWith(SpringRunner.class)
-//@SpringBootTest
-//@AutoConfigureMockMvc
-//or
-@WebMvcTest(controllers = {MyControllerDb.class})
 @Slf4j
+@RunWith(SpringRunner.class)
+@SpringBootTest
+@AutoConfigureMockMvc
+//or
+//@WebMvcTest(controllers = {MyControllerDb.class})
 public class MyControllerDbTest {
 
     @Autowired
@@ -57,6 +59,7 @@ public class MyControllerDbTest {
         Mockito.when(svc.save(any(MyEntity.class))).thenReturn(myEntity);
     }
 
+    //@WithMockUser(value = "mockUser")
     @Test
     public void testGetEntities() throws Exception {
         RequestBuilder requestBuilder = MockMvcRequestBuilders
@@ -72,6 +75,7 @@ public class MyControllerDbTest {
         log.info("response {}", mvcResult.getResponse().getContentAsString());
     }
 
+    //@WithMockUser(value = "mockUser")
     @Test
     public void testAddEntity() throws Exception {
         RequestBuilder requestBuilder = MockMvcRequestBuilders

@@ -21,10 +21,12 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
 //@Ignore
+@Slf4j
+@Sql(scripts = {"/data-plus.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT/*, properties = {"spring.h2.console.enabled=true", "spring.h2.console.path=/h2"}*/)
-@Sql(scripts = {"/data-plus.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
-@Slf4j
+//@TestPropertySource(properties = {"jwt.token.expiration.hours=10"})
+//@Import({TestSecurityConfigurer.class})
 public class MyControllerDbIT {
 
     @LocalServerPort
@@ -40,6 +42,7 @@ public class MyControllerDbIT {
 
     @Before
     public void setUp() throws Exception {
+        //this.template = template.withBasicAuth("spring", "secret");
         this.base = new URL("http://localhost:" + port + "/mcdb/entity");
     }
 
