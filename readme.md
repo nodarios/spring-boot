@@ -35,7 +35,9 @@
 
 [Spring Security](https://www.youtube.com/watch?v=sm-8qfMWEV8&list=PLqq-6Pq4lTTYTEooakHchTGglSvkZAjnE)  
 
+[graphql](https://app.pluralsight.com/guides/building-a-graphql-server-with-spring-boot)  
+
 ### `to do`
-graphql
+graphql client (make use of schema.json)  
 Actuator  
-gRPC
+gRPC  

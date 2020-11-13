@@ -1,4 +1,4 @@
-package com.pluralsight.mutator;
+package com.pluralsight.resolver;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import com.pluralsight.entity.Application;
@@ -9,11 +9,11 @@ import org.springframework.stereotype.Component;
 import java.util.Optional;
 
 @Component
-public class Mutation implements GraphQLMutationResolver {
+public class ApplicationMutation implements GraphQLMutationResolver {
 
     private ApplicationRepository applicationRepository;
 
-    public Mutation(ApplicationRepository applicationRepository) {
+    public ApplicationMutation(ApplicationRepository applicationRepository) {
         this.applicationRepository = applicationRepository;
     }
 
