@@ -7,10 +7,9 @@ public class Application {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="application_id")
     private Long id;
 
-    @Column(name = "app_name", nullable = false)
+    @Column(nullable = false)
     private String name;
 
     @Column(length = 2000)
