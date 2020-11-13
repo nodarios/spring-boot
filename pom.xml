@@ -24,6 +24,7 @@
         <module>remoting-rmi-client</module>
         <module>remoting-api</module>
         <module>security</module>
+        <module>graphql</module>
     </modules>
 
     <properties>
