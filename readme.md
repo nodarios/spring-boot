@@ -39,6 +39,6 @@
 [graphql](https://app.pluralsight.com/guides/building-a-graphql-server-with-spring-boot)  
 
 ### `to do`
-graphql client (make use of schema.json)  
+generate graphql api (model, invoker) from schema.json  
 Actuator  
 gRPC  
