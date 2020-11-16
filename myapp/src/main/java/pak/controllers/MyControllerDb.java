@@ -5,8 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-import pak.datajpa.entity.MyEntity;
-import pak.datajpa.service.MyService;
+import pak.entity.MyEntity;
+import pak.service.MyService;
 
 import java.util.List;
 

@@ -4,18 +4,17 @@
 
 1 graphiql or postman:
 
-mutation {  
-  newApplication(name: "name", owner: "owner", description: "desc") {  
-    id  
-    name  
-  }  
+mutation {
+  addPerson(personId: "personId") {
+    id
+    personId
+  }
 }
 
-{  
-  findAllApplications {  
-    id  
-    name  
-  }  
+{
+  findPersons {
+    id
+  }
 }
 
 2 curl or postman:
@@ -24,12 +23,12 @@ curl \
   -H "Content-Type: application/json" \
   -H "Accept: application/json" \
   -X POST \
-  -d '{ "query": "mutation { newApplication(name: \"name\", owner: \"owner\", description: \"desc\") {id name} }" }' \
+  -d '{ "query": "mutation { addPerson(personId: \"personId\") {id personId} }" }' \
   http://localhost:8080/graphql
 
 curl \
   -H "Content-Type: application/json" \
   -H "Accept: application/json" \
   -X POST \
-  -d '{ "query": "{ findAllApplications {id name} }" }' \
+  -d '{ "query": "{ findPersons {id} }" }' \
   http://localhost:8080/graphql

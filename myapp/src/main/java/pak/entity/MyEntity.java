@@ -1,4 +1,4 @@
-package pak.datajpa.entity;
+package pak.entity;
 
 import lombok.*;
 

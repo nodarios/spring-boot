@@ -1,4 +1,4 @@
-package com.pluralsight.exception;
+package pak.exception;
 
 import graphql.ErrorType;
 import graphql.GraphQLError;
@@ -8,13 +8,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ApplicationNotFoundException extends RuntimeException implements GraphQLError {
+public class EntityNotFoundException extends RuntimeException implements GraphQLError {
 
     private Map<String, Object> extensions = new HashMap<>();
 
-    public ApplicationNotFoundException(String message, Long invalidApplicationId) {
+    public EntityNotFoundException(String message, Long id) {
         super(message);
-        extensions.put("invalidApplicationId", invalidApplicationId);
+        extensions.put("invalid id", id);
     }
 
     @Override

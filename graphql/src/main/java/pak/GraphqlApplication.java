@@ -1,13 +1,13 @@
-package com.pluralsight;
+package pak;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FundamentalsApplication {
+public class GraphqlApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FundamentalsApplication.class, args);
+		SpringApplication.run(GraphqlApplication.class, args);
 	}
 
 }

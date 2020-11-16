@@ -1,4 +1,4 @@
-package pak.datajpa.entity.relation;
+package pak.entity.relation;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
@@ -6,11 +6,11 @@ import lombok.Data;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 @Entity
 @Data
-public class UserProfile {
+public class UserProfile2 {
     @Id
     private Integer id;
     private int age;
@@ -18,7 +18,7 @@ public class UserProfile {
 
     /** to solve: Could not write JSON: Infinite recursion */
     @JsonBackReference
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 }

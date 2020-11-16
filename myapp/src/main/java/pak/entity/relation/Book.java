@@ -1,4 +1,4 @@
-package pak.datajpa.entity.relation;
+package pak.entity.relation;
 
 import javax.persistence.*;
 import java.util.HashSet;

@@ -1,0 +1,8 @@
+type Student {
+  id: ID!
+  studentId: String!
+}
+
+extend type Query {
+  findStudents: [Student]!
+}

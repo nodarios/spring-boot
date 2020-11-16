@@ -1,4 +1,4 @@
-package pak.datajpa.service;
+package pak.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -6,8 +6,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import pak.datajpa.entity.MyEntity;
-import pak.datajpa.repository.MyRepo;
+import pak.entity.MyEntity;
+import pak.repository.MyRepo;
 
 import java.util.List;
 import java.util.Optional;

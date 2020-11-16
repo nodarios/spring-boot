@@ -1,6 +1,6 @@
-package pak.datajpa.service;
+package pak.service;
 
-import pak.datajpa.entity.MyEntity;
+import pak.entity.MyEntity;
 
 import java.util.List;
 
