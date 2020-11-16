@@ -20,9 +20,9 @@
     <modules>
         <module>myapp</module>
         <module>myapp-api</module>
-        <module>remoting-rmi-server</module>
-        <module>remoting-rmi-client</module>
-        <module>remoting-api</module>
+        <module>rmi-server</module>
+        <module>rmi-client</module>
+        <module>rmi-api</module>
         <module>security</module>
         <module>graphql</module>
     </modules>
