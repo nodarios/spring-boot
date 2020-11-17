@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.ConfigurableApplicationContext;
 
 @Slf4j
 @SpringBootApplication
@@ -14,16 +15,13 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 public class Application {
 
     public static void main(String[] args) {
-        System.setProperty("spring.devtools.restart.enabled", "true");
-        System.setProperty("spring.devtools.restart.additional-paths", ".");
-        System.setProperty("spring.devtools.restart.trigger-file", "restart");
         //System.setProperty("https.proxyHost", "proxy.loc");
         //System.setProperty("https.proxyPort", "3128");
 
-        //SpringApplication.run(MyEntity.class, args);
+        //SpringApplication.run(Application.class, args);
         SpringApplicationBuilder app = new SpringApplicationBuilder(Application.class);
         //app.web(WebApplicationType.NONE);
-        app.run(args);
+        ConfigurableApplicationContext ctx = app.run(args);
     }
 
 }
