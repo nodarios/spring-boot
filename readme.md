@@ -38,7 +38,15 @@
 [graphql](https://www.baeldung.com/spring-graphql)  
 [graphql](https://app.pluralsight.com/guides/building-a-graphql-server-with-spring-boot)  
 
+graphql api  
+https://github.com/graphql-java/awesome-graphql-java  
+https://github.com/graphql-java-generator/graphql-maven-plugin-project  
+https://github.com/lighblue/graphql-maven-plugin-project  
+https://github.com/janis91/spring-boot-graphql-client  
+https://medium.com/@tikimike/graphql-client-in-spring-366f348e9124
+
 ### `to do`
 generate graphql api (model, invoker) from schema.json  
+multiple DBs  
 Actuator  
 gRPC  
