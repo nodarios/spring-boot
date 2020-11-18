@@ -11,3 +11,4 @@ target/
 # Misc
 *.log
 local
+restart
