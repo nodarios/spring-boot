@@ -13,6 +13,8 @@
 [spring data jpa](https://docs.spring.io/spring-data/data-jpa/docs/current/reference/html/#jpa.query-methods)  
 [spring data jpa](https://attacomsian.com/blog/spring-data-jpa-named-queries)  
 
+[spring data jdbc](https://spring.io/guides/gs/relational-data-access/)
+
 [generate entities from tables](https://intellij-support.jetbrains.com/hc/en-us/community/posts/115000751864-Generate-Persistence-Mapping-by-Database-Schema-Detail-settings-for-Entity-Class)  
 [idea-plugin-jpa-support](https://github.com/carter-ya/idea-plugin-jpa-support)  
 
@@ -45,8 +47,12 @@ https://github.com/lighblue/graphql-maven-plugin-project
 https://github.com/janis91/spring-boot-graphql-client  
 https://medium.com/@tikimike/graphql-client-in-spring-366f348e9124
 
+multiple data source  
+https://medium.com/javarevisited/springboot-with-spring-data-jpa-using-multi-data-source-databases-mysql-sqlserver-3ce5f69559
+
 ### `to do`
 generate graphql api (model, invoker) from schema.json  
-multiple DBs  
+multiple data source  
+nosql and in-memory stores  
 Actuator  
 gRPC  
