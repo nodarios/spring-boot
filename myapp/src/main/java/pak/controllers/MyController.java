@@ -12,17 +12,17 @@ import java.nio.file.Paths;
 @RequestMapping("/mc")
 public class MyController {
 
-    @RequestMapping(path = "/", method = RequestMethod.GET)
+    @GetMapping(path = "/")
     public String index() {
         return "Greetings from Spring Boot!";
     }
 
-    @RequestMapping(path = "/{id}/{id2}/cust", method = RequestMethod.GET)
-    public Long getUser(@PathVariable Long id, @PathVariable Long id2, @RequestParam(name = "custId", defaultValue = "100") Long custId) {
+    @GetMapping(path = "/{id}/{id2}/cust")
+    public Long getUser(@PathVariable Long id, @PathVariable Long id2, @RequestParam Long custId) {
         return id + id2 + custId;
     }
 
-    @RequestMapping(path = "/targets-0.2.jar", method = RequestMethod.GET)
+    @GetMapping(path = "/targets-0.2.jar")
     public void downloadJar(HttpServletResponse response) throws IOException {
         Path path = Paths.get("C:\\Users\\nosakvarelidze\\Downloads\\", "targets-0.2.jar");
         Files.copy(path, response.getOutputStream());
