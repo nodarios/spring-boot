@@ -4,20 +4,20 @@
 
 [spring boot](https://www.baeldung.com/spring-boot-start)  
 [spring boot tutorial](https://www.javatpoint.com/spring-boot-tutorial)  
-[spring boot fundamentals](https://gitlab.com/videolearning/spring-fundamentals.git)  
+[spring boot fundamentals](https://gitlab.com/videolearning/spring-fundamentals.git)
 
-[remoting with rmi](https://www.baeldung.com/spring-remoting-rmi)  
+[remoting with rmi](https://www.baeldung.com/spring-remoting-rmi)
+
+[spring data jdbc](https://spring.io/guides/gs/relational-data-access/)
 
 [spring data jpa](https://thoughts-on-java.org/what-is-spring-data-jpa-and-why-should-you-use-it/)  
 [spring data jpa](https://www.baeldung.com/the-persistence-layer-with-spring-data-jpa)  
 [spring data jpa](https://docs.spring.io/spring-data/data-jpa/docs/current/reference/html/#jpa.query-methods)  
-[spring data jpa](https://attacomsian.com/blog/spring-data-jpa-named-queries)  
+[spring data jpa](https://attacomsian.com/blog/spring-data-jpa-named-queries)
 
-[spring data jdbc](https://spring.io/guides/gs/relational-data-access/)
-
+[hibernate inheritance](https://www.baeldung.com/hibernate-inheritance)  
 [generate entities from tables](https://intellij-support.jetbrains.com/hc/en-us/community/posts/115000751864-Generate-Persistence-Mapping-by-Database-Schema-Detail-settings-for-Entity-Class)  
 [idea-plugin-jpa-support](https://github.com/carter-ya/idea-plugin-jpa-support)  
-
 [load data to database](https://www.baeldung.com/spring-boot-data-sql-and-schema-sql)  
 
 [custom error page](https://www.baeldung.com/spring-boot-custom-error-page)  
