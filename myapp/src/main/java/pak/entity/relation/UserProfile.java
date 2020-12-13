@@ -1,20 +1,29 @@
 package pak.entity.relation;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Entity
-@Data
+@Setter
+@Getter
 public class UserProfile {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue
+    private UUID id;
+
     private Integer age;
+
     private String gender;
 
-    //@JsonBackReference // to solve: Could not write JSON: Infinite recursion
+    @JsonBackReference // to solve: Could not write JSON: Infinite recursion
     @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
+
 }

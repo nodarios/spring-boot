@@ -1,25 +1,30 @@
 package pak.entity.relation;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
-@Data
+@Setter
+@Getter
 public class Author {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue
+    private UUID id;
 
     private String name;
 
     /*
-     * better to not use below commented code, because:
-     * avoids recursion,
-     * simpler.
+     * below commented code avoids recursion, but lacks double linkage.
+     * better to use appropriate json annotations.
      */
     //@ManyToMany(mappedBy = "authors")
     //private Set<Book> books = new HashSet<>();

@@ -1,29 +1,26 @@
 package pak.entity.relation;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Data
+@Setter
+@Getter
 public class User extends Person {
 
-    /*
-     * better to not use below commented code, because:
-     * avoids recursion,
-     * simpler.
-     */
-    //@JsonManagedReference // to solve: Could not write JSON: Infinite recursion
-    //@OneToOne(mappedBy = "user")
-    //private UserProfile userProfile;
+    @JsonManagedReference // to solve: Could not write JSON: Infinite recursion
+    @OneToOne(mappedBy = "user")
+    private UserProfile userProfile;
 
-    /*
-     * better to not use below commented code, because:
-     * avoids recursion,
-     * simpler.
-     */
-    //@JsonManagedReference // to solve: Could not write JSON: Infinite recursion
-    //@OneToMany(mappedBy = "user")
-    //private List<UserProfile2> userProfile2 = new ArrayList<>();
+    @JsonManagedReference // to solve: Could not write JSON: Infinite recursion
+    @OneToMany(mappedBy = "user")
+    private List<UserProfile2> userProfile2 = new ArrayList<>();
 
 }
