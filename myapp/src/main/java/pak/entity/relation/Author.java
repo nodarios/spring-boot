@@ -20,7 +20,7 @@ public class Author {
     private String name;
 
     /*
-     * below commented code avoids recursion, but lacks double linkage.
+     * below code is commented to avoid recursion, but lacks double linkage.
      * better to use appropriate json annotations.
      */
     //@ManyToMany(mappedBy = "authors")
