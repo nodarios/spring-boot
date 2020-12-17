@@ -21,4 +21,7 @@ public abstract class Person {
 
     private String lastName;
 
+    //@Version
+    //private long version;
+
 }
