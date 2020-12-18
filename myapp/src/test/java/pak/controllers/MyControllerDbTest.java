@@ -24,6 +24,7 @@ import java.util.List;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
+import static org.mockito.AdditionalAnswers.returnsFirstArg;
 import static org.mockito.ArgumentMatchers.any;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -56,6 +57,7 @@ public class MyControllerDbTest {
         //given(svc.findAll()).willReturn(myEntityList);
 
         Mockito.when(svc.save(any(MyEntity.class))).thenReturn(myEntity);
+        //Mockito.when(svc.save(any(MyEntity.class))).then(returnsFirstArg());
     }
 
     //@WithMockUser(value = "mockUser")
