@@ -32,10 +32,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 //@Ignore
 @Slf4j
 @RunWith(SpringRunner.class)
+//--
 @SpringBootTest
 @AutoConfigureMockMvc
 //or
 //@WebMvcTest(controllers = {MyControllerDb.class})
+//--
+//@TestPropertySource(properties = {"jwt.token.expiration.hours=10"})
+//@Import({TestSecurityConfigurer.class})
 public class MyControllerDbTest {
 
     @Autowired
