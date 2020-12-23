@@ -1,6 +1,8 @@
 package pak.controllers;
 
 import org.springframework.web.bind.annotation.*;
+import pak.exception.AppException;
+import pak.exception.ErrorCodeType;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -15,6 +17,11 @@ public class MyController {
     @GetMapping(path = "/")
     public String index() {
         return "Greetings from Spring Boot!";
+    }
+
+    @GetMapping(path = "/error")
+    public void error() throws AppException {
+        throw new AppException(ErrorCodeType.ENTITY_NOT_FOUND);
     }
 
     @GetMapping(path = "/{id}/{id2}/cust")
