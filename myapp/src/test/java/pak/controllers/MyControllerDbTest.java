@@ -5,7 +5,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.BDDMockito;
 import org.mockito.Mockito;
+import org.mockito.invocation.InvocationOnMock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -57,11 +59,16 @@ public class MyControllerDbTest {
 
     @Before
     public void setUp() throws Exception {
+        // arrange
+
         Mockito.when(svc.findAll()).thenReturn(myEntityList);
-        //given(svc.findAll()).willReturn(myEntityList);
+        //BDDMockito.given(svc.findAll()).willReturn(myEntityList);
 
         Mockito.when(svc.save(any(MyEntity.class))).thenReturn(myEntity);
-        //Mockito.when(svc.save(any(MyEntity.class))).then(returnsFirstArg());
+        //Mockito.when(svc.save(any(MyEntity.class)))
+        //        .then(returnsFirstArg());
+        //Mockito.when(svc.save(any(MyEntity.class)))
+        //        .then((InvocationOnMock invocation) -> invocation.getArgument(0));
     }
 
     //@WithMockUser(value = "mockUser")
@@ -70,6 +77,7 @@ public class MyControllerDbTest {
         RequestBuilder requestBuilder = MockMvcRequestBuilders
                 .get("/mcdb/entity")
                 .accept(MediaType.APPLICATION_JSON);
+        // act and assert
         MvcResult mvcResult = mvc
                 .perform(requestBuilder)
                 .andExpect(status().isOk())
@@ -78,16 +86,20 @@ public class MyControllerDbTest {
                 //.andExpect(content().string(equalTo("")))
                 .andReturn();
         log.info("response {}", mvcResult.getResponse().getContentAsString());
+        // assert
+        Mockito.verify(svc/*, Mockito.never()*/).findAll();
     }
 
     //@WithMockUser(value = "mockUser")
     @Test
     public void testAddEntity() throws Exception {
+        MyEntity myEntity = new MyEntity();
         RequestBuilder requestBuilder = MockMvcRequestBuilders
                 .post("/mcdb/entity/add")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(new MyEntity()));
+                .content(objectMapper.writeValueAsString(myEntity));
+        // act and assert
         MvcResult mvcResult = mvc
                 .perform(requestBuilder)
                 .andExpect(status().isOk())
@@ -95,6 +107,8 @@ public class MyControllerDbTest {
                 //.andExpect(content().string(equalTo("")))
                 .andReturn();
         log.info("response {}", mvcResult.getResponse().getContentAsString());
+        // assert
+        Mockito.verify(svc/*, Mockito.never()*/).save(myEntity);
     }
 
 }
