@@ -34,15 +34,19 @@
 [java testing](https://www.jrebel.com/blog/how-to-use-java-integration-testing)  
 [spring testing](https://www.baeldung.com/spring-boot-testing)  
 [spring testing](https://www.baeldung.com/bdd-mockito)  
+[spring testing](https://reflectoring.io/spring-boot-test/)  
 [spring testing](https://reflectoring.io/unit-testing-spring-boot/)  
 [spring testing](https://reflectoring.io/spring-boot-web-controller-test/)  
-[spring testing](https://reflectoring.io/spring-boot-test/)  
+[spring testing](https://reflectoring.io/spring-boot-data-jpa-test/)  
 [spring security testing](https://www.baeldung.com/spring-security-integration-tests)  
 
 [Spring Security](https://www.youtube.com/watch?v=sm-8qfMWEV8&list=PLqq-6Pq4lTTYTEooakHchTGglSvkZAjnE)  
 
 [graphql](https://www.baeldung.com/spring-graphql)  
 [graphql](https://app.pluralsight.com/guides/building-a-graphql-server-with-spring-boot)  
+
+paging
+https://reflectoring.io/spring-boot-paging/
 
 graphql api  
 https://github.com/graphql-java/awesome-graphql-java  
