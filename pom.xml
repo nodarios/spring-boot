@@ -116,11 +116,11 @@
     </build>
 
     <!--
-    different dependency versions:
-    maven picks the highest if it can figure out what the highest is.
+    <dependencyManagement> allows to consolidate and centralize the management of dependencies.
+    e.g. if you have different dependency versions, maven picks the highest if it can figure out what the highest is.
     If you don't like the version it picks, you can pick one yourself by declaring that dependency in the <dependencyManagement> section.
-    Dependency Management allows to consolidate and centralize the management of dependency versions.
     -->
+    
     <dependencies>
         <dependency>
             <groupId>org.apache.maven.plugins</groupId>
