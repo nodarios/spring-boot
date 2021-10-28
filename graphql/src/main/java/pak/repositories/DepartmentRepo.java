@@ -1,7 +1,7 @@
-package pak.repository;
+package pak.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import pak.entity.Department;
+import pak.entities.Department;
 
 import java.util.UUID;
 

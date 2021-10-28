@@ -1,10 +1,10 @@
-package pak.resolver;
+package pak.resolvers;
 
 import graphql.kickstart.tools.GraphQLMutationResolver;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import pak.entity.Department;
-import pak.service.DepartmentService;
+import pak.entities.Department;
+import pak.services.DepartmentService;
 
 import java.util.UUID;
 

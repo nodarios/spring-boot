@@ -1,8 +1,8 @@
-package pak.repository;
+package pak.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
-import pak.entity.Employee;
+import pak.entities.Employee;
 
 import java.util.UUID;
 

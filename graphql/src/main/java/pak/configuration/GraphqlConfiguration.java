@@ -1,4 +1,4 @@
-package pak.config;
+package pak.configuration;
 
 import graphql.scalars.ExtendedScalars;
 import graphql.schema.GraphQLScalarType;

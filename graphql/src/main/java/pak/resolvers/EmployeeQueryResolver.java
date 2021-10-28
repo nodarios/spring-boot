@@ -1,13 +1,13 @@
-package pak.resolver;
+package pak.resolvers;
 
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import graphql.schema.DataFetchingEnvironment;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
-import pak.entity.Department;
-import pak.entity.Employee;
-import pak.service.EmployeeService;
+import pak.entities.Department;
+import pak.entities.Employee;
+import pak.services.EmployeeService;
 
 import javax.persistence.criteria.Fetch;
 import javax.persistence.criteria.Join;

@@ -4,6 +4,7 @@ import graphql.ErrorType;
 import graphql.GraphQLError;
 import graphql.language.SourceLocation;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,7 +12,7 @@ import java.util.UUID;
 
 public class EntityNotFoundException extends RuntimeException implements GraphQLError {
 
-    private Map<String, Object> extensions = new HashMap<>();
+    private final Map<String, Object> extensions = new HashMap<>();
 
     public EntityNotFoundException(String message, UUID id) {
         super(message);
@@ -20,7 +21,7 @@ public class EntityNotFoundException extends RuntimeException implements GraphQL
 
     @Override
     public List<SourceLocation> getLocations() {
-        return null;
+        return Collections.emptyList();
     }
 
     @Override

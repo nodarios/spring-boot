@@ -1,12 +1,12 @@
-package pak.service;
+package pak.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import pak.entity.Department;
+import pak.entities.Department;
 import pak.exception.EntityNotFoundException;
-import pak.repository.DepartmentRepo;
+import pak.repositories.DepartmentRepo;
 
 import java.util.Optional;
 import java.util.UUID;
