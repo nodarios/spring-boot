@@ -1,0 +1,30 @@
+extend type QueryResolver {
+    getEmployees: [Employee]
+    getEmployee(id: ID!): Employee
+}
+
+extend type MutationResolver {
+    addEmployee(employee: EmployeeInput!): Employee!
+    deleteEmployee(id: ID!): Boolean!
+}
+
+type Employee {
+    id: ID!
+    firstName: String!
+    lastName: String!
+    salary: Int!
+    department: Department!
+    anotherLazyField: String
+}
+
+input EmployeeInput {
+    firstName: String!
+    lastName: String!
+    salary: Int!
+    department: DepartmentInput!
+}
+
+schema {
+    query: QueryResolver
+    mutation: MutationResolver
+}

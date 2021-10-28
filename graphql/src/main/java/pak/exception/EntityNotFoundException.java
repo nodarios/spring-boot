@@ -7,12 +7,13 @@ import graphql.language.SourceLocation;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 public class EntityNotFoundException extends RuntimeException implements GraphQLError {
 
     private Map<String, Object> extensions = new HashMap<>();
 
-    public EntityNotFoundException(String message, Long id) {
+    public EntityNotFoundException(String message, UUID id) {
         super(message);
         extensions.put("invalid id", id);
     }

@@ -1,0 +1,25 @@
+# "!" means not null
+
+scalar Long
+
+type QueryResolver {
+    getDepartments: [Department]
+    getDepartment(id: ID!): Department
+    getDepartmentCount: Long!
+}
+
+type MutationResolver {
+    addDepartment(name: String!): Department!
+    updateDepartment(department: DepartmentInput!): Department!
+    deleteDepartment(id: ID!): Boolean!
+}
+
+type Department {
+    id: ID!
+    name: String!
+}
+
+input DepartmentInput {
+    id: ID!
+    name: String!
+}
