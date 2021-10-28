@@ -21,9 +21,9 @@ public class MyErrorController implements ErrorController {
         return modelAndView;
     }
 
-    @Override
-    public String getErrorPath() {
-        return "/error";
-    }
+    //@Override
+    //public String getErrorPath() {
+    //    return "/error";
+    //}
 
 }
