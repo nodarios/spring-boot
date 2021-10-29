@@ -1,4 +1,4 @@
-package pak.entity.relation;
+package pak.entities.relation;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;

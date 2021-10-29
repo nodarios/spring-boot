@@ -1,9 +1,9 @@
-package pak.repository;
+package pak.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import pak.entity.MyEntity;
+import pak.entities.MyEntity;
 
 import java.sql.Timestamp;
 import java.util.List;

@@ -1,4 +1,4 @@
-package pak.config;
+package pak.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

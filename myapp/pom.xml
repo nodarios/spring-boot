@@ -20,7 +20,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.6</version>
+                <version>0.8.7</version>
                 <!--
                 <configuration>
                     <excludes>
@@ -31,6 +31,7 @@
                 -->
                 <executions>
                     <execution>
+                        <id>prepare-agent</id>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
@@ -44,24 +45,46 @@
                         <!--
                         <configuration>
                             <outputDirectory>target/jacoco-report</outputDirectory>
+                            <formats>
+                                <format>HTML</format>
+                                <format>XML</format>
+                            </formats>
                         </configuration>
                         -->
                     </execution>
                     <!--
                     <execution>
-                        <id>jacoco-check</id>
+                        <id>check</id>
                         <goals>
                             <goal>check</goal>
                         </goals>
                         <configuration>
                             <rules>
                                 <rule>
-                                    <element>PACKAGE</element>
+                                    &lt;!&ndash;<element>PACKAGE</element>&ndash;&gt;
                                     <limits>
+                                        &lt;!&ndash;
                                         <limit>
                                             <counter>LINE</counter>
                                             <value>COVEREDRATIO</value>
                                             <minimum>0.6</minimum>
+                                        </limit>
+                                        &ndash;&gt;
+                                        <limit>
+                                            <counter>LINE</counter>
+                                            <minimum>90%</minimum>
+                                        </limit>
+                                        <limit>
+                                            <counter>INSTRUCTION</counter>
+                                            <minimum>90%</minimum>
+                                        </limit>
+                                        <limit>
+                                            <counter>BRANCH</counter>
+                                            <minimum>85%</minimum>
+                                        </limit>
+                                        <limit>
+                                            <counter>COMPLEXITY</counter>
+                                            <minimum>80%</minimum>
                                         </limit>
                                     </limits>
                                 </rule>
@@ -134,6 +157,21 @@
             <scope>runtime</scope>
         </dependency>
         -->
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>1.4.2.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>1.4.2.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok-mapstruct-binding</artifactId>
+            <version>0.2.0</version>
+        </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>

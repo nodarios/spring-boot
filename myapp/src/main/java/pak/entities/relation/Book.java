@@ -1,4 +1,4 @@
-package pak.entity.relation;
+package pak.entities.relation;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,6 +1,6 @@
-package pak.service;
+package pak.services;
 
-import pak.entity.MyEntity;
+import pak.entities.MyEntity;
 
 import java.util.List;
 
