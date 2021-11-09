@@ -12,6 +12,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import static springfox.documentation.builders.PathSelectors.regex;
 
 // http://localhost:8080/swagger-ui.html
+// http://localhost:8080/swagger-ui/index.html
 // http://localhost:8080/swagger-resources/
 // http://localhost:8080/v2/api-docs?group=greeting
 
