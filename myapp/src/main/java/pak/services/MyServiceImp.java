@@ -25,10 +25,12 @@ public class MyServiceImp implements MyService {
         //int i = 10/0;
     }
 
+    @Transactional(readOnly = true)
     public Iterable<MyEntity> findAll() {
         return repo.findAll();
     }
 
+    @Transactional(readOnly = true)
     public MyEntity findById(long id) throws Exception {
         Optional<MyEntity> opt = repo.findById(id);
 
@@ -39,6 +41,7 @@ public class MyServiceImp implements MyService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<MyEntity> findByName(String name) throws Exception {
         Optional<List<MyEntity>> opt = repo.findByName(name);
 
@@ -49,11 +52,13 @@ public class MyServiceImp implements MyService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<MyEntity> searchByOwner(String owner) {
         return repo.searchByOwner(owner);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<MyEntity> searchByDescription(String description) {
         return repo.searchByDescription(description);
     }
