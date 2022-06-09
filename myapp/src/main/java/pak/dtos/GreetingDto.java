@@ -1,11 +1,14 @@
 package pak.dtos;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pak.enums.Country;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class GreetingDto {
 
     private long id;
