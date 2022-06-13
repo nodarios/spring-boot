@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import pak.annotation.MyAnnotation;
 import pak.dtos.GreetingDto;
 import pak.dtos.GreetingPojo;
 import pak.enums.Country;
@@ -23,6 +24,7 @@ public class MyControllerGreeting {
     private final AtomicLong counter = new AtomicLong();
 
     @RequestMapping(path = "/greeting", method = RequestMethod.GET)
+    @MyAnnotation
     public GreetingDto greeting(@RequestParam(name = "suffix", defaultValue = "World") String suffix, GreetingPojo greetingPojo) {
 
 

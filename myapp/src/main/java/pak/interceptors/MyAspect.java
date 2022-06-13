@@ -18,12 +18,28 @@ import pak.dtos.GreetingDto;
 @Slf4j
 public class MyAspect {
 
+    //@Pointcut("within(@org.springframework.stereotype.Service *)")
+    //public void withinServiceClass() {
+    //}
+
+    //@Pointcut("within(pak.service..*)")
+    //public void withinServicePackage() {
+    //}
+
+    //@Pointcut("execution(public * *(..))")
+    //public void publicMethodExecution() {
+    //}
+
     @Pointcut("execution(* pak.controllers.MyControllerGreeting.greet*(..))")
-    public void myPK() {
+    public void greetMethodExecution() {
     }
 
-    //it is advice (before advice)
-    @Before("myPK()") //applying pointcut on advice
+    @Pointcut("@annotation(pak.annotation.MyAnnotation)")
+    private void hasMyAnnotation() {
+    }
+
+    // it is advice (before advice)
+    @Before("greetMethodExecution()") //applying pointcut on advice
     public void myBeforeAdvice(JoinPoint jp) {
         log.info("before");
         log.info("Method Signature: " + jp.getSignature());
@@ -38,8 +54,7 @@ public class MyAspect {
         log.info("returns: " + result.toString());
     }
 
-    //@Around("myPK() || (myPK2() && myPK3())")
-    @Around("execution(* pak.controllers.MyControllerGreeting.greet*(..))")
+    @Around("greetMethodExecution() && hasMyAnnotation())")
     public Object myAroundAdvice(ProceedingJoinPoint joinPoint) throws Throwable {
         Signature signature = joinPoint.getSignature();
         Class<?> returnType = ((MethodSignature) signature).getReturnType();
