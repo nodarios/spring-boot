@@ -28,8 +28,6 @@ public class MyMvcInterceptor implements HandlerInterceptor {
         long executeTime = endTime - startTime;
         //modelAndView.addObject("executeTime", executeTime);
         log.info("handler: {}, executeTime: {} ms", handler, executeTime);
-
-        MDC.remove("customKey");
     }
 
     @Override
