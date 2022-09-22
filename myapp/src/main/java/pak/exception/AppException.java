@@ -1,15 +1,16 @@
 package pak.exception;
 
 import lombok.Getter;
+import pak.enums.ErrorType;
 
 @Getter
 public class AppException extends Exception {
 
-    private final ErrorCodeType errorCode;
+    private final ErrorType errorType;
 
-    public AppException(ErrorCodeType errorCode) {
-        super(errorCode.toString());
-        this.errorCode = errorCode;
+    public AppException(ErrorType errorType) {
+        super(errorType.toString());
+        this.errorType = errorType;
     }
 
 }

@@ -1,23 +1,24 @@
-package pak.exception;
+package pak.dtos;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pak.enums.ErrorType;
 
 import java.time.Instant;
 
 @Getter @Setter
 @NoArgsConstructor
-public class RestErrorResponse {
+public class ErrorDto {
 
-    private ErrorCodeType error;
+    private ErrorType errorType;
     private Instant timestamp;
     private int status;
 
-    public RestErrorResponse(ErrorCodeType errorCode) {
-        this.error = errorCode;
+    public ErrorDto(ErrorType errorType) {
+        this.errorType = errorType;
         timestamp = Instant.now();
-        status = errorCode.getHttpStatus().value();
+        status = errorType.getHttpStatus().value();
     }
 
 }

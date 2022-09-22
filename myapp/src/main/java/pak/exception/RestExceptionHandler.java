@@ -1,38 +1,39 @@
 package pak.exception;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.HttpMessageNotReadableException;
-import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import pak.dtos.ErrorDto;
+import pak.enums.ErrorType;
 
+@Slf4j
 @RestControllerAdvice
 class RestExceptionHandler {
 
     @ExceptionHandler(AppException.class)
-    private ResponseEntity<RestErrorResponse> handleAppException(AppException exception) {
-        return buildErrorResponse(exception.getErrorCode());
+    private ResponseEntity<ErrorDto> handleAppException(AppException exception) {
+        return buildErrorResponse(exception.getErrorType(), exception);
     }
 
-    private ResponseEntity<RestErrorResponse> buildErrorResponse(ErrorCodeType errorCode) {
-        RestErrorResponse response = new RestErrorResponse(errorCode);
-        return ResponseEntity.status(errorCode.getHttpStatus()).body(response);
-    }
-
-    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
-    private ResponseEntity<RestErrorResponse> handleHttpRequestMethodNotSupportedException() {
-        return buildErrorResponse(ErrorCodeType.WRONG_HTTP_METHOD);
-    }
-
-    @ExceptionHandler({HttpMessageNotReadableException.class, MethodArgumentTypeMismatchException.class})
-    private ResponseEntity<RestErrorResponse> handleBadRequestException() {
-        return buildErrorResponse(ErrorCodeType.BAD_REQUEST);
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    private ResponseEntity<ErrorDto> handleMethodArgumentNotValidException(MethodArgumentNotValidException exception) {
+        return buildErrorResponse(ErrorType.INVALID_DATA, exception);
     }
 
     @ExceptionHandler(Exception.class)
-    private ResponseEntity<RestErrorResponse> handleUnknownException() {
-        return buildErrorResponse(ErrorCodeType.SERVER_ERROR);
+    private ResponseEntity<ErrorDto> handleUnknownException(Exception exception) {
+        return buildErrorResponse(ErrorType.SERVER_ERROR, exception);
+    }
+
+    private ResponseEntity<ErrorDto> buildErrorResponse(ErrorType errorType, Exception exception) {
+        log.error("", exception);
+
+        ErrorDto errorDto = new ErrorDto(errorType);
+        return ResponseEntity
+                .status(errorType.getHttpStatus())
+                .body(errorDto);
     }
 
 }

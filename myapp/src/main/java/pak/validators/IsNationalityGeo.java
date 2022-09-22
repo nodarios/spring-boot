@@ -9,8 +9,8 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = IsCountryGeoAndNotNullValidator.class)
-public @interface IsCountryGeoAndNotNull {
+@Constraint(validatedBy = IsNationalityGeoValidator.class)
+public @interface IsNationalityGeo {
 
     String message() default "default message";
 

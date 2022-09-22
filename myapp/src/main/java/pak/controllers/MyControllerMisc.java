@@ -2,7 +2,7 @@ package pak.controllers;
 
 import org.springframework.web.bind.annotation.*;
 import pak.exception.AppException;
-import pak.exception.ErrorCodeType;
+import pak.enums.ErrorType;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -11,8 +11,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 @RestController
-@RequestMapping("/mc")
-public class MyController {
+@RequestMapping("/misc")
+public class MyControllerMisc {
 
     @GetMapping(path = "/")
     public String index() {
@@ -21,7 +21,7 @@ public class MyController {
 
     @GetMapping(path = "/error")
     public void error() throws AppException {
-        throw new AppException(ErrorCodeType.ENTITY_NOT_FOUND);
+        throw new AppException(ErrorType.BAD_REQUEST);
     }
 
     @GetMapping(path = "/{id}/{id2}/cust")

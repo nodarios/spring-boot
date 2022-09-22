@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pak.validators.IsNationalityGeo;
 
 @Getter
 @Setter
@@ -12,7 +13,10 @@ import lombok.Setter;
 public class GreetingDto {
 
     private long id;
+
     private String content;
+
+    @IsNationalityGeo(message = "nationality is not valid")
     private String nationality;
 
 }

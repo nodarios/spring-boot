@@ -14,7 +14,7 @@ import pak.mappers.GreetingMapper;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
-@RequestMapping("/mcg")
+@RequestMapping("/greeting")
 @RequiredArgsConstructor
 public class MyControllerGreeting {
 
@@ -23,7 +23,7 @@ public class MyControllerGreeting {
     private static final String TEMPLATE = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
-    @GetMapping(path = "/greeting")
+    @GetMapping
     @MyAnnotation
     public GreetingDto greeting(@RequestParam(name = "suffix", defaultValue = "World") String suffix, GreetingPojo greetingPojo) {
         greetingPojo.setId(counter.incrementAndGet());
