@@ -30,9 +30,9 @@ public class MyBean implements CommandLineRunner {
     @Value("${dev.prop:default value}")
     private String devProp;
 
-    //@Value("${dev.prop.2:default value}")
-    @Value("${dev.prop.2:default value}")
-    private String devProp2;
+    //@Value("${dev.mixed-prop:default value}")
+    @Value("${dev.mixed-prop:default value}")
+    private String devMixedProp;
 
     // SpEL
     @Value("#{systemEnvironment['USERNAME'] ?: 'default value'}")
@@ -47,7 +47,7 @@ public class MyBean implements CommandLineRunner {
         log.info("userName {}", userName);
         log.info("osVersion {}", osVersion);
         log.info("devProp {}", devProp);
-        log.info("devProp2 {}", devProp2);
+        log.info("devProp2 {}", devMixedProp);
         log.info("userNameSpel {}", userNameSpel);
         log.info("osVersionSpel {}", osVersionSpel);
     }
