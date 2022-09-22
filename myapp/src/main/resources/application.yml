@@ -3,7 +3,7 @@ dev:
 
 spring:
 #  profiles:
-#    active: dev,dev2
+#    active: dev,dev2,dev3
 #  datasource:
 #    url: jdbc:postgresql://localhost:5442/mydb
 #    username: user
@@ -36,6 +36,16 @@ management:
 #  endpoint:
 #    health:
 #      show-details: always
+  metrics:
+    enable:
+      all: false
+      mm: true
+    export:
+      statsd:
+        enabled: true
+        host: ${DD_AGENT_HOST:localhost}
+        port: ${DD_DOGSTATSD_PORT:8125}
+        flavor: datadog
 
 
 

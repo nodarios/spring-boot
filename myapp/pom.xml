@@ -136,6 +136,14 @@
             <groupId>org.jolokia</groupId>
             <artifactId>jolokia-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-statsd</artifactId>
+        </dependency>
+        <!--<dependency>-->
+        <!--	<groupId>io.micrometer</groupId>-->
+        <!--	<artifactId>micrometer-registry-prometheus</artifactId>-->
+        <!--</dependency>-->
         <!--
         <dependency>
             <groupId>org.springframework.boot</groupId>
