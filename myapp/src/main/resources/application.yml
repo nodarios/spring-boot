@@ -1,6 +1,14 @@
 dev:
   prop: hi
 
+app:
+  scheduler:
+    enabled: false
+    my-scheduler:
+      enabled: true
+      initial-delay: PT01S
+      fixed-delay: PT03S
+
 spring:
 #  profiles:
 #    active: dev,dev2,dev3
