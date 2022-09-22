@@ -1,8 +1,8 @@
 package pak.controllers;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pak.annotation.MyAnnotation;
@@ -20,21 +20,17 @@ public class MyControllerGreeting {
 
     private final GreetingMapper greetingMapper;
 
-    private static final String template = "Hello, %s!";
+    private static final String TEMPLATE = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
-    @RequestMapping(path = "/greeting", method = RequestMethod.GET)
+    @GetMapping(path = "/greeting")
     @MyAnnotation
     public GreetingDto greeting(@RequestParam(name = "suffix", defaultValue = "World") String suffix, GreetingPojo greetingPojo) {
-
-
         greetingPojo.setId(counter.incrementAndGet());
-        greetingPojo.setContent(String.format(template, suffix));
+        greetingPojo.setContent(String.format(TEMPLATE, suffix));
         greetingPojo.setCountry(Country.GEO);
 
-
-        GreetingDto greetingDto = greetingMapper.mapPojoToDto(greetingPojo);
-        return greetingDto;
+        return greetingMapper.mapPojoToDto(greetingPojo);
     }
 
 }
