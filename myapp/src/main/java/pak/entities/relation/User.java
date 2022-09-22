@@ -7,12 +7,14 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Setter
 @Getter
+@Table(name = "user_table")
 public class User extends Person {
 
     @JsonManagedReference // to solve: Could not write JSON: Infinite recursion
