@@ -3,6 +3,12 @@
 
 ---
 
+### Startup
+* Run docker-compose
+* Run application
+
+---
+
 ### Jolokia
 * used to access jmx mbeans via http  
 [exec mbean method](http://localhost:8080/actuator/jolokia/exec/org.springframework.boot:type=Endpoint,name=Loggers/loggers)  
