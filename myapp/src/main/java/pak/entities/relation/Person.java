@@ -1,6 +1,7 @@
 package pak.entities.relation;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.GeneratedValue;
@@ -11,6 +12,7 @@ import java.util.UUID;
 @MappedSuperclass
 @Setter
 @Getter
+@NoArgsConstructor
 public abstract class Person {
 
     @Id

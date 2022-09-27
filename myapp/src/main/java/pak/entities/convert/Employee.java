@@ -1,6 +1,8 @@
 package pak.entities.convert;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pak.enums.Country;
 import pak.enums.Title;
@@ -16,6 +18,8 @@ import java.util.UUID;
 @Entity
 @Setter
 @Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Employee {
 
     @Id
