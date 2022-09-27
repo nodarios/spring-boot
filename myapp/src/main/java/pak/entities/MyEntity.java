@@ -1,11 +1,24 @@
 package pak.entities;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 
 @Entity
-@SequenceGenerator(name = "seq_myentity", sequenceName = "seq_myentity", allocationSize = 50, initialValue = 4)
 @NamedQueries({
         @NamedQuery(name = "MyEntity.searchByOwner",
                 query = "SELECT b FROM MyEntity b WHERE b.owner = :owner")
@@ -15,7 +28,6 @@ import javax.persistence.*;
                 query = "SELECT * FROM MY_ENTITY b WHERE b.description = :description",
                 resultClass = MyEntity.class)
 })
-//@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
@@ -27,6 +39,7 @@ public class MyEntity {
     @Id
     //@GeneratedValue(strategy = GenerationType.AUTO)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_myentity")
+    @SequenceGenerator(name = "seq_myentity", sequenceName = "seq_myentity", allocationSize = 1, initialValue = 4)
     @Column(name = "application_id")
     private Long id;
 
@@ -36,12 +49,5 @@ public class MyEntity {
     private String description;
 
     private String owner;
-
-    public MyEntity(String name, String owner,
-                    String description) {
-        this.name = name;
-        this.owner = owner;
-        this.description = description;
-    }
 
 }

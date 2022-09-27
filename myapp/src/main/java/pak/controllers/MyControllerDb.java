@@ -1,8 +1,6 @@
 package pak.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,19 +9,19 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
 import pak.entities.MyEntity;
 import pak.exception.AppException;
 import pak.services.MyService;
 
+import java.time.Instant;
 import java.util.List;
 
 @RestController
 @RequestMapping("/db")
+@RequiredArgsConstructor
 public class MyControllerDb {
 
-    @Autowired
-    private MyService myService;
+    private final MyService myService;
 
     @PostMapping("/my-entities")
     public MyEntity addMyEntity(@RequestBody MyEntity myEntity) {
@@ -50,25 +48,24 @@ public class MyControllerDb {
         return myService.findById(id);
     }
 
-    // TODO refactor remaining methods
-
-    @GetMapping(path = "/entity/name/{name}")
-    public ResponseEntity<List<MyEntity>> getEntityByName(@PathVariable("name") String name) {
-        try {
-            return new ResponseEntity<>(myService.findByName(name), HttpStatus.OK);
-        } catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage(), e);
-        }
+    @GetMapping("/my-entities/by-name/{name}")
+    public MyEntity getMyEntityByName(@PathVariable String name) throws AppException {
+        return myService.findByName(name);
     }
 
-    @GetMapping(path = "/entity/owner/{owner}")
-    public List<MyEntity> getEntityByOwner(@PathVariable("owner") String owner) {
+    @GetMapping("/my-entities/by-owner/{owner}")
+    public List<MyEntity> getMyEntitiesByOwner(@PathVariable String owner) {
         return myService.searchByOwner(owner);
     }
 
-    @GetMapping(path = "/entity/description/{description}")
-    public List<MyEntity> getEntityByDescription(@PathVariable("description") String description) {
+    @GetMapping("/my-entities/by-description/{description}")
+    public List<MyEntity> getMyEntitiesByDescription(@PathVariable String description) {
         return myService.searchByDescription(description);
+    }
+
+    @GetMapping("time")
+    public Instant getDbTime() {
+        return myService.getDatabaseTime();
     }
 
 }

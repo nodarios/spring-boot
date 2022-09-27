@@ -1,24 +1,66 @@
 package pak.services;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import pak.entities.MyEntity;
+import pak.enums.ErrorType;
 import pak.exception.AppException;
+import pak.repositories.MyRepo;
 
+import java.time.Instant;
 import java.util.List;
 
-public interface MyService {
+@Service
+@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
+@RequiredArgsConstructor
+public class MyService {
 
-    MyEntity save(MyEntity app);
+    private final MyRepo myRepo;
 
-    void deleteById(Long id);
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public MyEntity save(MyEntity app) {
+        return myRepo.save(app);
+    }
 
-    Iterable<MyEntity> findAll();
+    @Transactional
+    public void deleteById(Long id) {
+        myRepo.deleteById(id);
+    }
 
-    MyEntity findById(long id) throws AppException;
+    @Transactional(readOnly = true)
+    public Iterable<MyEntity> findAll() {
+        return myRepo.findAll();
+    }
 
-    List<MyEntity> findByName(String name) throws Exception;
+    @Transactional(readOnly = true)
+    public MyEntity findById(long id) throws AppException {
+        return myRepo.findById(id)
+                .orElseThrow(() -> new AppException(ErrorType.ENTITY_NOT_FOUND));
+    }
 
-    List<MyEntity> searchByOwner(String owner);
+    @Transactional(readOnly = true)
+    public MyEntity findByName(String name) throws AppException {
+        return myRepo.findByName(name)
+                .orElseThrow(() -> new AppException(ErrorType.ENTITY_NOT_FOUND));
+    }
 
-    List<MyEntity> searchByDescription(String description);
+    @Transactional(readOnly = true)
+    public List<MyEntity> searchByOwner(String owner) {
+        return myRepo.searchByOwner(owner);
+    }
+
+    @Transactional(readOnly = true)
+    public List<MyEntity> searchByDescription(String description) {
+        return myRepo.searchByDescription(description);
+    }
+
+    @Transactional(readOnly = true)
+    public Instant getDatabaseTime() {
+        return myRepo.getDatabaseTime();
+    }
 
 }
