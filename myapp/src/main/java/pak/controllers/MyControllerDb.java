@@ -3,61 +3,72 @@ package pak.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import pak.entities.MyEntity;
+import pak.exception.AppException;
 import pak.services.MyService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/mcdb")
+@RequestMapping("/db")
 public class MyControllerDb {
 
     @Autowired
-    private MyService svc;
+    private MyService myService;
 
-    @RequestMapping(path = "/entity/add", method = RequestMethod.POST/*method = RequestMethod.PUT*/)
-    public MyEntity addEntity(@RequestBody MyEntity myEntity) throws Exception {
-        return svc.save(myEntity);
+    @PostMapping("/my-entities")
+    public MyEntity addMyEntity(@RequestBody MyEntity myEntity) {
+        return myService.save(myEntity);
     }
 
-    @RequestMapping(path = "/entity/addWithName", method = RequestMethod.GET)
-    public MyEntity addEntity(@RequestParam(name = "name", defaultValue = "default_name") String name) {
-        return svc.save(new MyEntity(name, "default_owner", "default_desc"));
+    @PutMapping("/my-entities")
+    public MyEntity updateMyEntity(@RequestBody MyEntity myEntity) {
+        return myService.save(myEntity);
     }
 
-    @RequestMapping(path = "/entity", method = RequestMethod.GET)
-    public Iterable<MyEntity> getEntities() {
-        return svc.findAll();
+    @DeleteMapping("/my-entities/{id}")
+    public void deleteMyEntity(@PathVariable Long id) {
+        myService.deleteById(id);
     }
 
-    @RequestMapping(path = "/entity/id/{id}", method = RequestMethod.GET)
-    public ResponseEntity<MyEntity> getEntityById(@PathVariable("id") long id) {
-        try {
-            return new ResponseEntity<>(svc.findById(id), HttpStatus.OK);
-        } catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage(), e);
-        }
+    @GetMapping("/my-entities")
+    public Iterable<MyEntity> getMyEntities() {
+        return myService.findAll();
     }
 
-    @RequestMapping(path = "/entity/name/{name}", method = RequestMethod.GET)
+    @GetMapping("/my-entities/{id}")
+    public MyEntity getMyEntity(@PathVariable Long id) throws AppException {
+        return myService.findById(id);
+    }
+
+    // TODO refactor remaining methods
+
+    @GetMapping(path = "/entity/name/{name}")
     public ResponseEntity<List<MyEntity>> getEntityByName(@PathVariable("name") String name) {
         try {
-            return new ResponseEntity<>(svc.findByName(name), HttpStatus.OK);
+            return new ResponseEntity<>(myService.findByName(name), HttpStatus.OK);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage(), e);
         }
     }
 
-    @RequestMapping(path = "/entity/owner/{owner}", method = RequestMethod.GET)
+    @GetMapping(path = "/entity/owner/{owner}")
     public List<MyEntity> getEntityByOwner(@PathVariable("owner") String owner) {
-        return svc.searchByOwner(owner);
+        return myService.searchByOwner(owner);
     }
 
-    @RequestMapping(path = "/entity/description/{description}", method = RequestMethod.GET)
+    @GetMapping(path = "/entity/description/{description}")
     public List<MyEntity> getEntityByDescription(@PathVariable("description") String description) {
-        return svc.searchByDescription(description);
+        return myService.searchByDescription(description);
     }
 
 }

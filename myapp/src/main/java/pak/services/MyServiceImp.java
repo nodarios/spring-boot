@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import pak.entities.MyEntity;
+import pak.enums.ErrorType;
+import pak.exception.AppException;
 import pak.repositories.MyRepo;
 
 import java.util.List;
@@ -22,7 +24,11 @@ public class MyServiceImp implements MyService {
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public MyEntity save(MyEntity app) {
         return repo.save(app);
-        //int i = 10/0;
+    }
+
+    @Transactional
+    public void deleteById(Long id) {
+        repo.deleteById(id);
     }
 
     @Transactional(readOnly = true)
@@ -31,13 +37,9 @@ public class MyServiceImp implements MyService {
     }
 
     @Transactional(readOnly = true)
-    public MyEntity findById(long id) throws Exception {
-        Optional<MyEntity> opt = repo.findById(id);
-
-        if (opt.isPresent())
-            return opt.get();
-        else
-            throw new Exception("MyEntity Not Found");
+    public MyEntity findById(long id) throws AppException {
+        return repo.findById(id)
+                .orElseThrow(() -> new AppException(ErrorType.ENTITY_NOT_FOUND));
     }
 
     @Override
@@ -62,6 +64,5 @@ public class MyServiceImp implements MyService {
     public List<MyEntity> searchByDescription(String description) {
         return repo.searchByDescription(description);
     }
-
 
 }

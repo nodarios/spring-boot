@@ -1,7 +1,6 @@
 package pak;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -19,6 +18,7 @@ public class Application {
         //System.setProperty("https.proxyPort", "3128");
 
         //SpringApplication.run(Application.class, args);
+
         SpringApplicationBuilder app = new SpringApplicationBuilder(Application.class);
         //app.web(WebApplicationType.NONE);
         ConfigurableApplicationContext ctx = app.run(args);

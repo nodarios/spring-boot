@@ -1,8 +1,12 @@
 package pak.controllers;
 
-import org.springframework.web.bind.annotation.*;
-import pak.exception.AppException;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import pak.enums.ErrorType;
+import pak.exception.AppException;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -15,12 +19,12 @@ import java.nio.file.Paths;
 public class MyControllerMisc {
 
     @GetMapping(path = "/")
-    public String index() {
+    public String getString() {
         return "Greetings from Spring Boot!";
     }
 
     @GetMapping(path = "/error")
-    public void error() throws AppException {
+    public void getError() throws AppException {
         throw new AppException(ErrorType.BAD_REQUEST);
     }
 

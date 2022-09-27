@@ -1,0 +1,15 @@
+version: "3.3"
+services:
+
+  spring-boot-myapp-postgres:
+    image: postgres:14.5
+    container_name: spring-boot-myapp-postgres
+    restart: always
+    ports:
+      - "5443:5432"
+    env_file: database-variables.env
+    volumes:
+      - spring-boot-myapp-postgres:/var/lib/postgresql/data
+
+volumes:
+  spring-boot-myapp-postgres:

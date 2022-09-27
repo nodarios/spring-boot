@@ -30,8 +30,8 @@ public class MyAspect {
     //public void publicMethodExecution() {
     //}
 
-    @Pointcut("execution(* pak.controllers.MyControllerGreeting.greet*(..))")
-    public void greetMethodExecution() {
+    @Pointcut("execution(* pak.controllers.MyControllerAspect.processReq*(..))")
+    public void processRequestMethodExecution() {
     }
 
     @Pointcut("@annotation(pak.annotation.MyAnnotation)")
@@ -39,14 +39,14 @@ public class MyAspect {
     }
 
     // it is advice (before advice)
-    @Before("greetMethodExecution()") //applying pointcut on advice
+    @Before("processRequestMethodExecution()") //applying pointcut on advice
     public void myBeforeAdvice(JoinPoint jp) {
         log.info("before");
         log.info("Method Signature: " + jp.getSignature());
         log.info("bean name: " + jp.getTarget().getClass().getName());
     }
 
-    @AfterReturning(pointcut = "execution(* pak.controllers.MyControllerGreeting.greet*(..))", returning = "result")
+    @AfterReturning(pointcut = "processRequestMethodExecution()", returning = "result")
     public void myAfterAdvice(JoinPoint jp, Object result) {
         log.info("after returning");
         log.info("Method Signature: " + jp.getSignature());
@@ -54,7 +54,7 @@ public class MyAspect {
         log.info("returns: " + result.toString());
     }
 
-    @Around("greetMethodExecution() && hasMyAnnotation())")
+    @Around("processRequestMethodExecution() && hasMyAnnotation())")
     public Object myAroundAdvice(ProceedingJoinPoint joinPoint) throws Throwable {
         Signature signature = joinPoint.getSignature();
         Class<?> returnType = ((MethodSignature) signature).getReturnType();

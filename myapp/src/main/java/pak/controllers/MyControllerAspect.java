@@ -14,9 +14,9 @@ import pak.mappers.GreetingMapper;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
-@RequestMapping("/greeting")
+@RequestMapping("/aspect")
 @RequiredArgsConstructor
-public class MyControllerGreeting {
+public class MyControllerAspect {
 
     private final GreetingMapper greetingMapper;
 
@@ -25,7 +25,7 @@ public class MyControllerGreeting {
 
     @GetMapping
     @MyAnnotation
-    public GreetingDto greeting(@RequestParam(name = "suffix", defaultValue = "World") String suffix, GreetingPojo greetingPojo) {
+    public GreetingDto processRequest(@RequestParam(name = "suffix", defaultValue = "World") String suffix, GreetingPojo greetingPojo) {
         greetingPojo.setId(counter.incrementAndGet());
         greetingPojo.setContent(String.format(TEMPLATE, suffix));
         greetingPojo.setCountry(Country.GEO);
