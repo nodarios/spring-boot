@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import pak.annotation.MyAnnotation;
 import pak.dtos.MyEntityDto;
 import pak.entities.MyEntity;
 import pak.exception.AppException;
@@ -28,15 +29,16 @@ public class MyControllerDb {
     private final MyEntityMapper mapper;
 
     @PostMapping("/my-entities")
-    public MyEntityDto addMyEntity(@RequestBody MyEntityDto myEntityDto) {
-        MyEntity result = myService.save(mapper.mapDtoToEntity(myEntityDto));
-        return mapper.mapEntityToDto(result);
+    @MyAnnotation
+    public MyEntityDto addMyEntity(@RequestBody MyEntityDto dto) {
+        MyEntity entity = myService.save(mapper.mapDtoToEntity(dto));
+        return mapper.mapEntityToDto(entity);
     }
 
     @PutMapping("/my-entities")
-    public MyEntityDto updateMyEntity(@RequestBody MyEntityDto myEntityDto) {
-        MyEntity result = myService.save(mapper.mapDtoToEntity(myEntityDto));
-        return mapper.mapEntityToDto(result);
+    public MyEntityDto updateMyEntity(@RequestBody MyEntityDto dto) {
+        MyEntity entity = myService.save(mapper.mapDtoToEntity(dto));
+        return mapper.mapEntityToDto(entity);
     }
 
     @DeleteMapping("/my-entities/{id}")
