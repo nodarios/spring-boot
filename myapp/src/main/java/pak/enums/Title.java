@@ -16,7 +16,7 @@ public enum Title {
 
     private final Long id;
 
-    public static Title getById(Long id) {
+    public static Title valueOf(Long id) {
         return Arrays
                 .stream(values())
                 .filter(title -> title.getId().equals(id))

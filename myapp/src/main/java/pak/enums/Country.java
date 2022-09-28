@@ -14,7 +14,7 @@ public enum Country {
 
     private final Long id;
 
-    public static Country getById(Long id) throws Exception {
+    public static Country valueOf(Long id) throws Exception {
         return Arrays
                 .stream(values())
                 .filter(title -> title.getId().equals(id))

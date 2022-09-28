@@ -9,12 +9,15 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import pak.dtos.MyEntityDto;
 import pak.entities.MyEntity;
 import pak.exception.AppException;
+import pak.mappers.MyEntityMapper;
 import pak.services.MyService;
 
 import java.time.Instant;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/db")
@@ -22,15 +25,18 @@ import java.util.List;
 public class MyControllerDb {
 
     private final MyService myService;
+    private final MyEntityMapper mapper;
 
     @PostMapping("/my-entities")
-    public MyEntity addMyEntity(@RequestBody MyEntity myEntity) {
-        return myService.save(myEntity);
+    public MyEntityDto addMyEntity(@RequestBody MyEntityDto myEntityDto) {
+        MyEntity result = myService.save(mapper.mapDtoToEntity(myEntityDto));
+        return mapper.mapEntityToDto(result);
     }
 
     @PutMapping("/my-entities")
-    public MyEntity updateMyEntity(@RequestBody MyEntity myEntity) {
-        return myService.save(myEntity);
+    public MyEntityDto updateMyEntity(@RequestBody MyEntityDto myEntityDto) {
+        MyEntity result = myService.save(mapper.mapDtoToEntity(myEntityDto));
+        return mapper.mapEntityToDto(result);
     }
 
     @DeleteMapping("/my-entities/{id}")
@@ -39,23 +45,23 @@ public class MyControllerDb {
     }
 
     @GetMapping("/my-entities")
-    public Iterable<MyEntity> getMyEntities() {
-        return myService.findAll();
+    public List<MyEntityDto> getMyEntities() {
+        return myService.findAll().stream().map(mapper::mapEntityToDto).collect(Collectors.toList());
     }
 
     @GetMapping("/my-entities/{id}")
-    public MyEntity getMyEntity(@PathVariable Long id) throws AppException {
-        return myService.findById(id);
+    public MyEntityDto getMyEntity(@PathVariable Long id) throws AppException {
+        return mapper.mapEntityToDto(myService.findById(id));
     }
 
     @GetMapping("/my-entities/by-name/{name}")
-    public MyEntity getMyEntityByName(@PathVariable String name) throws AppException {
-        return myService.findByName(name);
+    public MyEntityDto getMyEntityByName(@PathVariable String name) throws AppException {
+        return mapper.mapEntityToDto(myService.findByName(name));
     }
 
     @GetMapping("/my-entities/by-info/{info}")
-    public List<MyEntity> getMyEntitiesByInfo(@PathVariable String info) {
-        return myService.searchByInfo(info);
+    public List<MyEntityDto> getMyEntitiesByInfo(@PathVariable String info) {
+        return myService.searchByInfo(info).stream().map(mapper::mapEntityToDto).collect(Collectors.toList());
     }
 
     @GetMapping("time")

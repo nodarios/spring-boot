@@ -32,7 +32,7 @@ public class MyService {
     }
 
     @Transactional(readOnly = true)
-    public Iterable<MyEntity> findAll() {
+    public List<MyEntity> findAll() {
         return myRepo.findAll();
     }
 

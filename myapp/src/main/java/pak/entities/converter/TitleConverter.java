@@ -1,4 +1,4 @@
-package pak.entities.convert;
+package pak.entities.converter;
 
 import pak.enums.Title;
 
@@ -15,7 +15,7 @@ public class TitleConverter implements AttributeConverter<Title, Long> {
 
     @Override
     public Title convertToEntityAttribute(Long id) {
-        return Title.getById(id);
+        return Title.valueOf(id);
     }
 
 }
