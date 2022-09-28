@@ -37,13 +37,13 @@ public class MyService {
     }
 
     @Transactional(readOnly = true)
-    public MyEntity findById(long id) throws AppException {
+    public MyEntity findById(long id) {
         return myRepo.findById(id)
                 .orElseThrow(() -> new AppException(ErrorType.ENTITY_NOT_FOUND));
     }
 
     @Transactional(readOnly = true)
-    public MyEntity findByName(String name) throws AppException {
+    public MyEntity findByName(String name) {
         return myRepo.findByName(name)
                 .orElseThrow(() -> new AppException(ErrorType.ENTITY_NOT_FOUND));
     }

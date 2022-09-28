@@ -12,7 +12,7 @@ public class ValidatorWrapper {
 
     private Validator validator;
 
-    public void validate(Object object) throws AppException {
+    public void validate(Object object) {
         if (validator == null) {
             validator = Validation.buildDefaultValidatorFactory().getValidator();
         }

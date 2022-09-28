@@ -48,7 +48,7 @@ public class MyEntity {
     @SequenceGenerator(name = "seq_myentity", sequenceName = "seq_myentity", allocationSize = 1, initialValue = 5)
     private Long id;
 
-    @Column(nullable = false, unique = true, length = 2000)
+    @Column(nullable = false, unique = true, length = 20)
     private String name;
 
     private String info;

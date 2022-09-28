@@ -2,6 +2,7 @@ package pak.enums;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import pak.exception.AppException;
 
 import java.util.Arrays;
 
@@ -21,7 +22,7 @@ public enum Title {
                 .stream(values())
                 .filter(title -> title.getId().equals(id))
                 .findFirst()
-                .orElse(null);
+                .orElseThrow(() -> new AppException(ErrorType.INVALID_DATA));
     }
 
 }

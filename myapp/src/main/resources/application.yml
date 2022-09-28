@@ -51,7 +51,7 @@ management:
 
 springdoc:
   packages-to-scan: pak.controllers
-  paths-to-match: /valid*/**
+  paths-to-match: /db/my-ent*/**
 
 
 

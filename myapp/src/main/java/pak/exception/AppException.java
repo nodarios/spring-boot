@@ -4,7 +4,7 @@ import lombok.Getter;
 import pak.enums.ErrorType;
 
 @Getter
-public class AppException extends Exception {
+public class AppException extends RuntimeException {
 
     private final ErrorType errorType;
 

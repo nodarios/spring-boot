@@ -24,7 +24,7 @@ public class MyControllerMisc {
     }
 
     @GetMapping(path = "/error")
-    public void getError() throws AppException {
+    public void getError() {
         throw new AppException(ErrorType.BAD_REQUEST);
     }
 

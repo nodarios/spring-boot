@@ -12,10 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 import pak.annotation.MyAnnotation;
 import pak.dtos.MyEntityDto;
 import pak.entities.MyEntity;
-import pak.exception.AppException;
 import pak.mappers.MyEntityMapper;
 import pak.services.MyService;
+import pak.validators.ValidatorWrapper;
 
+import javax.validation.Valid;
 import java.time.Instant;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -30,13 +31,14 @@ public class MyControllerDb {
 
     @PostMapping("/my-entities")
     @MyAnnotation
-    public MyEntityDto addMyEntity(@RequestBody MyEntityDto dto) {
+    public MyEntityDto addMyEntity(@RequestBody @Valid MyEntityDto dto) {
         MyEntity entity = myService.save(mapper.mapDtoToEntity(dto));
         return mapper.mapEntityToDto(entity);
     }
 
     @PutMapping("/my-entities")
     public MyEntityDto updateMyEntity(@RequestBody MyEntityDto dto) {
+        ValidatorWrapper.validate(dto);
         MyEntity entity = myService.save(mapper.mapDtoToEntity(dto));
         return mapper.mapEntityToDto(entity);
     }
@@ -52,12 +54,12 @@ public class MyControllerDb {
     }
 
     @GetMapping("/my-entities/{id}")
-    public MyEntityDto getMyEntity(@PathVariable Long id) throws AppException {
+    public MyEntityDto getMyEntity(@PathVariable Long id) {
         return mapper.mapEntityToDto(myService.findById(id));
     }
 
     @GetMapping("/my-entities/by-name/{name}")
-    public MyEntityDto getMyEntityByName(@PathVariable String name) throws AppException {
+    public MyEntityDto getMyEntityByName(@PathVariable String name) {
         return mapper.mapEntityToDto(myService.findByName(name));
     }
 

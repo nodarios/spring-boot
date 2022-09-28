@@ -1,13 +1,15 @@
 package pak.validators;
 
+import org.springframework.util.StringUtils;
+
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class IsNationalityGeoValidator implements ConstraintValidator<IsNationalityGeo, String> {
+public class IsNameValidValidator implements ConstraintValidator<IsNameValid, String> {
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        return value != null && value.equals("geo");
+        return StringUtils.hasText(value) && value.length() <= 20;
     }
 
 }
