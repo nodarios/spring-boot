@@ -53,14 +53,9 @@ public class MyControllerDb {
         return myService.findByName(name);
     }
 
-    @GetMapping("/my-entities/by-owner/{owner}")
-    public List<MyEntity> getMyEntitiesByOwner(@PathVariable String owner) {
-        return myService.searchByOwner(owner);
-    }
-
-    @GetMapping("/my-entities/by-description/{description}")
-    public List<MyEntity> getMyEntitiesByDescription(@PathVariable String description) {
-        return myService.searchByDescription(description);
+    @GetMapping("/my-entities/by-info/{info}")
+    public List<MyEntity> getMyEntitiesByInfo(@PathVariable String info) {
+        return myService.searchByInfo(info);
     }
 
     @GetMapping("time")

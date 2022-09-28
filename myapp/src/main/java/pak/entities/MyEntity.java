@@ -20,12 +20,12 @@ import javax.persistence.SequenceGenerator;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "MyEntity.searchByOwner",
-                query = "SELECT b FROM MyEntity b WHERE b.owner = :owner")
+        @NamedQuery(name = "my-entity.search-by-info",
+                query = "select e from MyEntity e where e.info = :info")
 })
 @NamedNativeQueries({
-        @NamedNativeQuery(name = "MyEntity.searchByDescription",
-                query = "SELECT * FROM MY_ENTITY b WHERE b.description = :description",
+        @NamedNativeQuery(name = "my-entity.search-by-info2",
+                query = "select * from my_entity e where e.info = :info",
                 resultClass = MyEntity.class)
 })
 @AllArgsConstructor
@@ -40,14 +40,11 @@ public class MyEntity {
     //@GeneratedValue(strategy = GenerationType.AUTO)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_myentity")
     @SequenceGenerator(name = "seq_myentity", sequenceName = "seq_myentity", allocationSize = 1, initialValue = 4)
-    @Column(name = "application_id")
     private Long id;
 
-    @Column(name = "app_name", nullable = false, unique = true, length = 2000)
+    @Column(nullable = false, unique = true, length = 2000)
     private String name;
 
-    private String description;
-
-    private String owner;
+    private String info;
 
 }

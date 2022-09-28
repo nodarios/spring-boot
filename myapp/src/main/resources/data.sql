@@ -1,3 +1,3 @@
-INSERT INTO my_entity (application_id, app_name, description, owner) VALUES (1, 'a','desc', 'owner');
-INSERT INTO my_entity (application_id, app_name, description, owner) VALUES (2, 'b','desc', 'owner');
-INSERT INTO my_entity (application_id, app_name, description, owner) VALUES (3, 'c','desc', 'owner');
+INSERT INTO my_entity (id, name, info) VALUES (1, 'a','info');
+INSERT INTO my_entity (id, name, info) VALUES (2, 'b','info');
+INSERT INTO my_entity (id, name, info) VALUES (3, 'c','info');

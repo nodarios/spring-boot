@@ -11,15 +11,13 @@ import java.util.Optional;
 
 public interface MyRepo extends JpaRepository<MyEntity, Long> {
 
-    //@Query(value = "SELECT f FROM MyEntity f WHERE LOWER(f.name) = LOWER(:name)")
-    //@Query(value = "SELECT * FROM MY_ENTITY WHERE APP_NAME = :name", nativeQuery = true)
+    //@Query(value = "select e from MyEntity e where lower(e.name) = lower(:name)")
+    //@Query(value = "select * from my_entity e where e.name = :name", nativeQuery = true)
     Optional<MyEntity> findByName(@Param("name") String name);
 
-    //@Query(name = "MyEntity.searchByOwner")
-    List<MyEntity> searchByOwner(@Param("owner") String owner);
-
-    //@Query(name = "MyEntity.searchByDescription", nativeQuery = true)
-    List<MyEntity> searchByDescription(@Param("description") String description);
+    //@Query(name = "my-entity.search-by-info")
+    //@Query(name = "my-entity.search-by-info2", nativeQuery = true)
+    List<MyEntity> searchByInfo(@Param("info") String info);
 
     //@Query(value = "SELECT SYSDATE FROM DUAL", nativeQuery = true)
     //@Query(value = "SELECT SYSDATE()", nativeQuery = true)

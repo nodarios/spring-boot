@@ -51,7 +51,7 @@ management:
 
 springdoc:
   packages-to-scan: pak.controllers
-  paths-to-match: /asp*
+  paths-to-match: /valid*/**
 
 
 

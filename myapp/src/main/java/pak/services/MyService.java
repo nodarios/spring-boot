@@ -49,13 +49,8 @@ public class MyService {
     }
 
     @Transactional(readOnly = true)
-    public List<MyEntity> searchByOwner(String owner) {
-        return myRepo.searchByOwner(owner);
-    }
-
-    @Transactional(readOnly = true)
-    public List<MyEntity> searchByDescription(String description) {
-        return myRepo.searchByDescription(description);
+    public List<MyEntity> searchByInfo(String info) {
+        return myRepo.searchByInfo(info);
     }
 
     @Transactional(readOnly = true)
