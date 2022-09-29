@@ -21,5 +21,5 @@
 ### Micrometer
 micrometer is a facade, here sending metrics to datadog  
 to check result, use below link or netcat command:  
-* [view specific metric](http://localhost:8080/actuator/metrics/mm.my-metric.total)  
+* [view specific metric](http://localhost:8080/actuator/metrics/mm.my-metric.total?tag=my-tag:even)  
 * `ncat -ul 8125`  
