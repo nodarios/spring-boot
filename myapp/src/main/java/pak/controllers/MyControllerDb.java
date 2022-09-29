@@ -1,6 +1,8 @@
 package pak.controllers;
 
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import pak.annotation.MyAnnotation;
 import pak.dtos.MyEntityDto;
@@ -19,7 +22,6 @@ import pak.validators.ValidatorWrapper;
 import javax.validation.Valid;
 import java.time.Instant;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/db")
@@ -31,6 +33,7 @@ public class MyControllerDb {
 
     @PostMapping("/my-entities")
     @MyAnnotation
+    @Operation(summary = "add new entity")
     public MyEntityDto addMyEntity(@RequestBody @Valid MyEntityDto dto) {
         MyEntity entity = myService.save(mapper.mapDtoToEntity(dto));
         return mapper.mapEntityToDto(entity);
@@ -44,13 +47,14 @@ public class MyControllerDb {
     }
 
     @DeleteMapping("/my-entities/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteMyEntity(@PathVariable Long id) {
         myService.deleteById(id);
     }
 
     @GetMapping("/my-entities")
     public List<MyEntityDto> getMyEntities() {
-        return myService.findAll().stream().map(mapper::mapEntityToDto).collect(Collectors.toList());
+        return myService.findAll().stream().map(mapper::mapEntityToDto).toList();
     }
 
     @GetMapping("/my-entities/{id}")
@@ -65,7 +69,7 @@ public class MyControllerDb {
 
     @GetMapping("/my-entities/by-info/{info}")
     public List<MyEntityDto> getMyEntitiesByInfo(@PathVariable String info) {
-        return myService.searchByInfo(info).stream().map(mapper::mapEntityToDto).collect(Collectors.toList());
+        return myService.searchByInfo(info).stream().map(mapper::mapEntityToDto).toList();
     }
 
     @GetMapping("time")

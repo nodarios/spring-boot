@@ -1,5 +1,8 @@
 package pak.exception;
 
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -10,6 +13,8 @@ import pak.enums.ErrorType;
 
 @Slf4j
 @RestControllerAdvice
+@ApiResponse(responseCode = "error code", description = "error response",
+        content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class)))
 class RestExceptionHandler {
 
     @ExceptionHandler(AppException.class)
