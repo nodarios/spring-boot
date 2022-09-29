@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - includeAll:
+      path: db/changelog/scripts
+      errorIfMissingOrEmpty: false
+#  - include:
+#      file: db/changelog/scripts/000-load-data-for-my-entity-table.yaml
+#  - include:
+#      file: db/changelog/scripts/001-load-data-for-my-entity-table.yaml
+#  - include:
+#      file: db/changelog/scripts/002-load-data-for-my-entity-table.yaml

@@ -1,0 +1,37 @@
+ databaseChangeLog:
+  - changeSet:
+      id: 002-load-data-for-my-entity-table
+      #context: 'prod'
+      author: Nodar Sakvarelidze
+      changes:
+        - tagDatabase:
+            tag: 002-load-data-for-my-entity-table
+        - loadData:
+            columns:
+              - column:
+                  header: id
+                  name: id
+                  type: NUMERIC
+              - column:
+                  header: name
+                  name: name
+                  type: STRING
+              - column:
+                  header: info
+                  name: info
+                  type: STRING
+              - column:
+                  header: country
+                  name: country
+                  type: STRING
+              - column:
+                  header: title
+                  name: title
+                  type: NUMERIC
+                  #type: DATE
+            file: db/changelog/data/002-my-entity-table-data.csv
+            encoding: UTF-8
+            quotchar: '"'
+            separator: ','
+            #commentLineStartsWith: '#'
+            tableName: my_entity

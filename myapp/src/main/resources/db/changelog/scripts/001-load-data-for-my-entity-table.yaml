@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001-load-data-for-my-entity-table
+      author: Nodar Sakvarelidze
+      #context: '!prod and !dev'
+      changes:
+        - tagDatabase:
+            tag: 001-load-data-for-my-entity-table
+        - sqlFile:
+            dbms: 'postgresql'
+            path: db/changelog/data/001-my-entity-table-data.sql
+            stripComments: true
+            splitStatements: false

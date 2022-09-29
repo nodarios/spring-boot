@@ -18,14 +18,14 @@ spring:
     password: pass
     driver-class-name: org.postgresql.Driver
   jpa:
-    hibernate.ddl-auto: create
+    hibernate.ddl-auto: validate
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
     properties.hibernate.format_sql: true
-    defer-datasource-initialization: true
-  sql:
-    init:
-      mode: always
+#    defer-datasource-initialization: true
+#  sql:
+#    init:
+#      mode: always
 
 management:
   endpoints:
@@ -60,7 +60,7 @@ springdoc:
 #        #spring.datasource.username=sa
 #        #spring.datasource.password=
 #        spring.datasource.driver-class-name=org.h2.Driver
-#        spring.jpa.hibernate.ddl-auto=update
+#        spring.jpa.hibernate.ddl-auto=create
 #        spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
 #        spring.jpa.defer-datasource-initialization=true
 #        spring.h2.console.enabled=true
@@ -71,7 +71,7 @@ springdoc:
 #        #spring.datasource.username=user
 #        #spring.datasource.password=pass
 #        #spring.datasource.driverClassName=com.mysql.cj.jdbc.Driver
-#        #spring.jpa.hibernate.ddl-auto=validate
+#        #spring.jpa.hibernate.ddl-auto=update
 #        #spring.jpa.database-platform=org.hibernate.dialect.MySQL5InnoDBDialect
 
 #        ### MSSQL

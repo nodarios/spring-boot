@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - changeSet:
+      id: 000-load-data-for-my-entity-table
+      author: Nodar Sakvarelidze
+      changes:
+        - tagDatabase:
+            tag: 000-load-data-for-my-entity-table
+        - sql:
+            sql: |-
+              INSERT INTO my_entity (id, name, info, country, title) VALUES (1, 'a sql','info', 'GEO', 1);
+              INSERT INTO my_entity (id, name, info, country, title) VALUES (2, 'b sql','info', 'GEO', 2);
+      rollback:
+        - sql:
+            sql: |-
+              DELETE FROM my_entity where id = 1;
+              DELETE FROM my_entity where id = 2;
