@@ -47,7 +47,7 @@ public class MyBean implements CommandLineRunner {
         log.info("userName {}", userName);
         log.info("osVersion {}", osVersion);
         log.info("devProp {}", devProp);
-        log.info("devProp2 {}", devMixedProp);
+        log.info("devMixedProp {}", devMixedProp);
         log.info("userNameSpel {}", userNameSpel);
         log.info("osVersionSpel {}", osVersionSpel);
     }
