@@ -19,10 +19,10 @@ public class TestMicrometer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws InterruptedException {
-        while (true) {
+        for (int i = 0; i < 100; i++) {
             Thread.sleep(3000);
-            Tag tag = Tag.of("tagKey", "tagValue");
-            meterRegistry.counter("mm.my.metric", Tags.of(tag)).increment();
+            Tag tag = (i % 2 == 0) ? Tag.of("my-tag", "even") : Tag.of("my-tag", "odd");
+            meterRegistry.counter("mm.my-metric.total", Tags.of(tag)).increment();
             log.info("incremented");
         }
 

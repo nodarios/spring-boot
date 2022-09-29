@@ -20,7 +20,6 @@
 
 ### Micrometer
 micrometer is a facade, here sending metrics to datadog  
-to check result, use netcat:
-```
-ncat -ul 8125
-```
+to check result, use below link or netcat command:  
+* [view specific metric](http://localhost:8080/actuator/metrics/mm.my-metric.total)  
+* `ncat -ul 8125`  
