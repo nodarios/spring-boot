@@ -1,4 +1,5 @@
 version: "3.3"
+
 services:
 
   spring-boot-myapp-postgres:
@@ -10,6 +11,45 @@ services:
     env_file: database-variables.env
     volumes:
       - spring-boot-myapp-postgres:/var/lib/postgresql/data
+
+  spring-boot-myapp-zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    container_name: spring-boot-myapp-zookeeper
+    restart: always
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+
+  spring-boot-myapp-kafka:
+    image: confluentinc/cp-kafka:latest
+    container_name: spring-boot-myapp-kafka
+    restart: always
+    depends_on:
+      - spring-boot-myapp-zookeeper
+    ports:
+      - "19092:19092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: spring-boot-myapp-zookeeper:2181
+      KAFKA_INTER_BROKER_LISTENER_NAME: LISTENER_EXTERNAL
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: LISTENER_EXTERNAL:PLAINTEXT,LISTENER_INTERNAL:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: LISTENER_EXTERNAL://localhost:19092,LISTENER_INTERNAL://spring-boot-myapp-kafka:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+
+  spring-boot-myapp-kafka-ui:
+    image: obsidiandynamics/kafdrop:latest
+    container_name: spring-boot-myapp-kafka-ui
+    restart: always
+    depends_on:
+      - spring-boot-myapp-kafka
+    ports:
+      - "19000:9000"
+    environment:
+      KAFKA_BROKERCONNECT: spring-boot-myapp-kafka:9092
+      JVM_OPTS: -Xms32M -Xmx64M
+      SERVER_SERVLET_CONTEXTPATH: /
 
 volumes:
   spring-boot-myapp-postgres:
