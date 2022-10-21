@@ -28,6 +28,26 @@ spring:
 #  sql:
 #    init:
 #      mode: always
+  cloud:
+    function:
+      definition: myEventConsumerProducer
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:19092
+          configuration:
+            key.deserializer: org.apache.kafka.common.serialization.StringDeserializer
+            key.serializer: org.apache.kafka.common.serialization.StringSerializer
+      bindings:
+        myEventConsumerProducer-in-0:
+          destination: my.event.ingress.topic
+          group: my-event-group-01
+          content-type: application/json
+          consumer:
+            concurrency: 1
+        myEventConsumerProducer-out-0:
+          destination: my.event.egress.topic
+          content-type: application/json
 
 management:
   endpoints:
