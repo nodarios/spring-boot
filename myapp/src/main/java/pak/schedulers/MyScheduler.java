@@ -23,13 +23,13 @@ public class MyScheduler {
     @Scheduled(initialDelayString = "${app.scheduler.my-scheduler.initial-delay}",
             fixedDelayString = "${app.scheduler.my-scheduler.fixed-delay}")
     public void myTask() {
-        log.info("*************");
         ThreadPoolTaskExecutor executor = (ThreadPoolTaskExecutor) ctx.getBean("applicationTaskExecutor");
+        log.info("*************");
         log.info("{}", executor.getClass().getName());
         log.info("{}", executor.getCorePoolSize());
+        log.info("thread id: {}", Thread.currentThread().getId());
         log.info("initialDelay: {}, fixedDelay: {}",
                 mySchedulerProperties.getInitialDelay(), mySchedulerProperties.getFixedDelay());
-        log.info("thread id: {}", Thread.currentThread().getId());
     }
 
 }

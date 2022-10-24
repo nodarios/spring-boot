@@ -5,7 +5,11 @@ app:
   scheduler:
     enabled: false
     my-scheduler:
-      enabled: true
+      enabled: false
+      initial-delay: PT01S
+      fixed-delay: PT03S
+    kafka-scheduler:
+      enabled: false
       initial-delay: PT01S
       fixed-delay: PT03S
 

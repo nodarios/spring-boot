@@ -3,26 +3,24 @@ package pak.properties;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
 
-@Component
-@ConfigurationProperties(prefix = "app.scheduler.my-scheduler")
+@ConfigurationProperties(prefix = "app.scheduler.kafka-scheduler")
 @Getter
 @Setter
-public class MySchedulerProperties {
+public class KafkaSchedulerProperties {
 
     /**
-     * Enables MyScheduler.
+     * Enables KafkaScheduler.
      */
     private boolean enabled;
 
     /**
-     * MyScheduler init delay.
+     * KafkaScheduler init delay.
      */
     private String initialDelay;
 
     /**
-     * MyScheduler fixed delay.
+     * KafkaScheduler fixed delay.
      */
     private String fixedDelay;
 
