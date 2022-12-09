@@ -24,8 +24,9 @@ public class Author {
     private String name;
 
     /*
-     * below code is commented to avoid recursion, but lacks double linkage.
-     * better to use appropriate json annotations.
+     * to avoid recursion
+     * 1. comment out one side of double linkage, as shown below.
+     * 2. can use appropriate json annotations, but in this case must use only lists, instead of sets.
      */
     //@ManyToMany(mappedBy = "authors")
     //private Set<Book> books = new HashSet<>();
