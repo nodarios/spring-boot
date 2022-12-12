@@ -26,7 +26,8 @@ public class Author {
     /*
      * to avoid recursion
      * 1. comment out one side of double linkage, as shown below.
-     * 2. can use appropriate json annotations, but in this case must use only lists, instead of sets.
+     * 2. can use appropriate json annotations, but in this case must use only lists instead of sets.
+     * 3. use interface based projections without recursion, also they act as egress dto without mapper.
      */
     //@ManyToMany(mappedBy = "authors")
     //private Set<Book> books = new HashSet<>();
