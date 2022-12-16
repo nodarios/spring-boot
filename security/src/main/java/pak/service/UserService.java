@@ -17,14 +17,15 @@ import java.util.stream.Stream;
 public class UserService implements UserDetailsService {
 
     @Override
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        // TODO substitute with db repo
-        List<GrantedAuthority> authorities = Stream.of(new SimpleGrantedAuthority("PR_SUPER_ACCESS")).collect(Collectors.toList());
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        // substitute with db repo
+        List<GrantedAuthority> authorities = Stream
+                .of(new SimpleGrantedAuthority("PR_SUPER_ACCESS"))
+                .collect(Collectors.toList());
         return new User(
                 "foo",
                 new BCryptPasswordEncoder().encode("foo"),
-                authorities
-        );
+                authorities);
     }
 
 }

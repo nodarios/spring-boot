@@ -5,13 +5,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.io.Serializable;
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
 @Getter
-public class AuthenticationRequest implements Serializable {
+public class AuthenticationRequest {
     private String username;
     private String password;
 }

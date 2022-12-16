@@ -5,12 +5,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.io.Serializable;
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
 @Getter
-public class AuthenticationResponse implements Serializable {
+public class AuthenticationResponse {
     private String jwt;
 }

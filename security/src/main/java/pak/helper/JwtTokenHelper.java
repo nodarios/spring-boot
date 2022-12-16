@@ -1,4 +1,4 @@
-package pak.component;
+package pak.helper;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -13,29 +13,13 @@ import java.util.Map;
 import java.util.function.Function;
 
 @Component
-public class JwtTokenUtil {
+public class JwtTokenHelper {
 
     @Value("${jwt.secret.key}")
     private String secret;
 
     @Value("${jwt.token.expiration.hours}")
     private long tokenExpirationHours;
-
-    /**
-     * among exceptions are: SignatureException and ExpiredJwtException
-     */
-    private Claims extractClaims(String token) {
-        return Jwts
-                .parser()
-                .setSigningKey(secret)
-                .parseClaimsJws(token)
-                .getBody();
-    }
-
-    private <T> T extractSpecificClaim(String token, Function<Claims, T> claimsResolver) {
-        final Claims claims = extractClaims(token);
-        return claimsResolver.apply(claims);
-    }
 
     public String extractUsernameWithValidation(String token) {
         return extractSpecificClaim(token, Claims::getSubject);
@@ -47,6 +31,20 @@ public class JwtTokenUtil {
 
     public Date extractIssuedAtWithValidation(String token) {
         return extractSpecificClaim(token, Claims::getIssuedAt);
+    }
+
+    private <T> T extractSpecificClaim(String token, Function<Claims, T> claimsResolver) {
+        final Claims claims = extractClaims(token);
+        return claimsResolver.apply(claims);
+    }
+
+    // among exceptions are: SignatureException and ExpiredJwtException
+    private Claims extractClaims(String token) {
+        return Jwts
+                .parser()
+                .setSigningKey(secret)
+                .parseClaimsJws(token)
+                .getBody();
     }
 
     public String generateToken(UserDetails userDetails) {

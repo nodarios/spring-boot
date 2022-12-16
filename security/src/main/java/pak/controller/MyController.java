@@ -1,63 +1,62 @@
 package pak.controller;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
+import pak.helper.JwtTokenHelper;
 import pak.model.AuthenticationRequest;
 import pak.model.AuthenticationResponse;
-import pak.component.JwtTokenUtil;
 import pak.service.UserService;
 
 @Slf4j
 @RestController
+@RequiredArgsConstructor
 public class MyController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+    private final JwtTokenHelper jwtTokenHelper;
+    private final AuthenticationManager authenticationManager;
 
-    @Autowired
-    private JwtTokenUtil jwtTokenUtil;
-
-    @Autowired
-    private AuthenticationManager authenticationManager;
-
-    @RequestMapping(path = {"/welcome"}, method = RequestMethod.GET)
+    @GetMapping(path = {"/welcome"})
     public String welcome() {
         return "welcome";
     }
 
-    @RequestMapping(path = {"/guarded"}, method = RequestMethod.GET)
-    public String guarded() {
+    @GetMapping(path = {"/guarded"})
+    public String guarded(@AuthenticationPrincipal String username) {
+        log.info("username {}", username);
         return "guarded";
     }
 
-    @RequestMapping(path = {"/superGuarded"}, method = RequestMethod.GET)
-    public String superGuarded() {
+    @GetMapping(path = {"/superGuarded"})
+    public String superGuarded(@AuthenticationPrincipal String username) {
+        log.info("username {}", username);
         return "superGuarded";
     }
 
-    @RequestMapping(path = "/authenticate", method = RequestMethod.POST)
+    @PostMapping(path = "/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest authenticationRequest) {
         try {
             authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword())
-            );
+                    new UsernamePasswordAuthenticationToken(
+                            authenticationRequest.getUsername(),
+                            authenticationRequest.getPassword()));
         } catch (AuthenticationException e) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, e.getMessage(), e);
         }
         final UserDetails userDetails = userService.loadUserByUsername(authenticationRequest.getUsername());
-        final String jwt = jwtTokenUtil.generateToken(userDetails);
-        //return new ResponseEntity<>(new AuthenticationResponse(jwt), HttpStatus.OK);
+        final String jwt = jwtTokenHelper.generateToken(userDetails);
         return ResponseEntity.ok(new AuthenticationResponse(jwt));
     }
 
