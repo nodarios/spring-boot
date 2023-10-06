@@ -59,10 +59,10 @@ management:
   endpoints:
     web:
       exposure:
-        include: info,health,metrics,loggers,beans,mappings,jolokia
+        include: info,health,env,metrics,loggers,beans,mappings,jolokia
     jmx:
       exposure:
-        include: info,health,metrics,loggers,beans,mappings,jolokia
+        include: info,health,env,metrics,loggers,beans,mappings,jolokia
   endpoint:
     health:
       show-details: always
