@@ -52,6 +52,8 @@ spring:
         myEventConsumerProducer-out-0:
           destination: my.event.egress.topic
           content-type: application/json
+  jmx:
+    enabled: true
 
 management:
   endpoints:
